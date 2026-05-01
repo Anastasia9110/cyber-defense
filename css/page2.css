@@ -1,0 +1,339 @@
+/* Твои шрифты */
+@font-face {
+    font-family: 'Montserrat';
+    src: url('/assets/fonts/Montserrat-Thin.woff2') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Pixelify Sans';
+    src: url('/assets/fonts/PixelifySans-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Обнуление */
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+}
+
+body {
+    background: linear-gradient(-56deg, #121217, #010346);
+    font-family: 'Montserrat', sans-serif;
+    overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.robot-bubble {
+    opacity: 0;
+    position: absolute;
+    top: 7rem;
+    right: 40%;
+    padding: 15px 25px;
+    background: linear-gradient(to right, #1E88C7, #0790d9);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    z-index: 3;
+    will-change: opacity, transform;
+    max-width: 450px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* Хвостик */
+.robot-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -15px;
+    width: 25px;
+    height: 25px;
+    background: #0790d9;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.robot-bubble.error-bubble::after {
+    background: #c73e54;
+}
+
+.anim-loop-1 {
+    animation: lifeCycle1 25s ease-in-out infinite;
+}
+
+.anim-loop-2 {
+    animation: lifeCycle2 25s ease-in-out infinite;
+}
+
+.anim-once {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes lifeCycle1 {
+
+    0%,
+    5% {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    10%,
+    45% {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+}
+
+@keyframes lifeCycle2 {
+
+    0%,
+    55% {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    60%,
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+}
+
+.play-game {
+    position: absolute;
+    top: 20em;
+    left: 20%;
+    transform: translateX(-50%);
+    background: #0209CD;
+    color: white;
+    border: none;
+    padding: 0.9em 4em;
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 1.8em;
+    cursor: url(/assets/logo/cursor\ \(1\).png) pointer;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    transition: background 0.3s ease, transform 0.1s ease;
+    z-index: 10;
+}
+
+.play-game:hover {
+    background: #7f1ef5;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.play-game:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.play-game-2 {
+    position: absolute;
+    top: 80%;
+    /* Расположена ниже финального сообщения */
+    left: 20%;
+    transform: translateX(-50%);
+    background: #0209CD;
+    color: white;
+    border: none;
+    padding: 0.9em 4em;
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 1.8em;
+    cursor: url(/assets/logo/cursor\ \(1\).png) pointer;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    transition: background 0.3s ease, transform 0.1s ease;
+    z-index: 10;
+}
+
+.play-game-2:hover {
+    background: #7f1ef5;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.play-game-2:active {
+    transform: translateX(-50%) scale(0.95);
+}
+
+.answers-container {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    display: flex;
+    gap: 20px;
+    z-index: 10;
+}
+
+.answer-btn {
+    margin-top: 7em;
+    padding: 20px 45px;
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 1.3rem;
+    color: white;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+    transition: all 0.2s;
+    background: linear-gradient(90deg, #3707DA, #1D0474);
+    box-shadow: 0 4px 15px rgba(55, 7, 218, 0.4);
+}
+
+.answer-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(55, 7, 218, 0.6);
+}
+
+.answer-btn:active {
+    transform: scale(0.95);
+}
+
+.main-robot {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    transform: translateY(-50%);
+    width: 45%;
+    max-width: 500px;
+    z-index: 1;
+}
+
+/* =========================================
+   МОБИЛЬНАЯ ВЕРСИЯ
+   ========================================= */
+@media (max-width: 768px) {
+    .main-robot {
+        position: relative;
+        top: 22rem;
+        right: auto;
+        left: 65%;
+        transform: translateX(-50%);
+        width: 65%;
+        max-width: 260px;
+    }
+
+    .robot-bubble {
+        position: relative;
+        top: auto;
+        bottom: 17em;
+        right: 5em;
+        width: 55%;
+        margin: 0 auto;
+    }
+
+    .bubble {
+        bottom: 30em;
+    }
+
+    .answers-container {
+        position: relative;
+        top: 6rem;
+        left: auto;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin: 1rem 0 0 0;
+    }
+
+    .answer-btn {
+        width: 60%;
+        max-width: 300px;
+        font-size: 1.4rem;
+        padding: 12px 15px;
+        display: block;
+        margin: 0.5em auto 0;
+        text-align: center;
+    }
+
+    .play-game {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        top: auto;
+        transform: translateX(-50%);
+        width: fit-content;
+        margin: 0;
+        padding: 0.8em 3em;
+        font-size: 1.6rem;
+        display: block;
+    }
+
+    /* ✅ ИСПРАВЛЕНО: добавлена точка перед классом и top: auto */
+    .play-game-2 {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        top: auto;
+        transform: translateX(-50%);
+        width: 70%;
+        margin: 0;
+        padding: 0.8em 3em;
+        font-size: 1.6rem;
+        display: block;
+
+        background: #0209CD;
+        color: white;
+        border: none;
+        font-family: 'Pixelify Sans', cursive;
+        cursor: url(/assets/logo/cursor\ \(1\).png) pointer;
+        clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+        transition: background 0.3s ease, transform 0.1s ease;
+        z-index: 10;
+    }
+
+    .play-game-2:hover {
+        background: #7f1ef5;
+        transform: translateX(-50%) translateY(-2px);
+    }
+
+    .play-game-2:active {
+        transform: translateX(-50%) scale(0.95);
+    }
+
+}

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кибербезопасность: Тест</title>
+    <link rel="stylesheet" href="/css/page2.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div id="intro-screen">
+        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+
+        <div class="robot-bubble anim-loop-1">
+          Твоя миссия — распознать мошеннические сообщения среди писем, SMS и
+          уведомлений. Как играть: читай сообщение, решай безопасно оно или
+          мошенничество!
+        </div>
+
+        <div class="robot-bubble anim-loop-2 bubble">
+          Принимаем тебя в ряды экспертов. Нажимай на кнопку, чтобы разобрать
+          первое сообщение. Помни: мошенники хитры!
+        </div>
+
+        <button class="play-game" onclick="startGame()">ИГРАТЬ</button>
+      </div>
+
+      <!-- ЭКРАН 2: ИГРА -->
+      <div id="quiz-screen" style="display: none">
+        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+
+        <div class="robot-bubble" id="game-bubble">Загрузка...</div>
+
+        <div class="answers-container" id="answer-buttons">
+          <button class="answer-btn" onclick="checkAnswer(true)">
+            Безопасно
+          </button>
+          <button class="answer-btn" onclick="checkAnswer(false)">
+            Опасно
+          </button>
+        </div>
+
+        <button
+          class="play-game"
+          id="continue-btn"
+          style="display: none"
+          onclick="nextQuestion()"
+        >
+          ДАЛЬШЕ
+        </button>
+      </div>
+      <div id="finish-screen" style="display: none">
+        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+        <div class="robot-bubble anim-once" style="text-align: center">
+          Поздравляем!<br /><br />
+          Ты прошёл все испытания<br />
+          и стал экспертом по<br />
+          кибербезопасности!
+        </div>
+        <button class="play-game-2" onclick="location.reload()">ИГРА 2</button>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>
