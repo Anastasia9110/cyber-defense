@@ -251,7 +251,7 @@ body {
 @media (max-width: 768px) {
     .main-robot {
         position: relative;
-        top: 22rem;
+        top: 15rem;
         right: auto;
         left: 65%;
         transform: translateX(-50%);
@@ -260,81 +260,90 @@ body {
     }
 
     .robot-bubble {
-        position: relative;
-        top: auto;
-        bottom: 17em;
-        right: 5em;
+        position: absolute;
+        /* Точное позиционирование по экрану */
+        top: 5%;
+        /* ⬆️ ЧЕМ МЕНЬШЕ %, ТЕМ ВЫШЕ. Попробуй 10%, 12%, 15% */
+        left: 10%;
+        /* Центрируем по горизонтали */
+        transform: translateX(-50%);
         width: 55%;
-        margin: 0 auto;
-    }
-
-    .bubble {
-        bottom: 30em;
-    }
-
-    .answers-container {
-        position: relative;
-        top: 6rem;
-        left: auto;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 15px;
-        margin: 1rem 0 0 0;
-    }
-
-    .answer-btn {
-        width: 60%;
-        max-width: 300px;
-        font-size: 1.4rem;
-        padding: 12px 15px;
-        display: block;
-        margin: 0.5em auto 0;
-        text-align: center;
-    }
-
-    .play-game {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        top: auto;
-        transform: translateX(-50%);
-        width: fit-content;
         margin: 0;
-        padding: 0.8em 3em;
-        font-size: 1.6rem;
-        display: block;
-    }
-
-    /* ✅ ИСПРАВЛЕНО: добавлена точка перед классом и top: auto */
-    .play-game-2 {
-        position: absolute;
-        bottom: 2rem;
-        left: 50%;
-        top: auto;
-        transform: translateX(-50%);
-        width: 70%;
-        margin: 0;
-        padding: 0.8em 3em;
-        font-size: 1.6rem;
-        display: block;
-
-        background: #0209CD;
-        color: white;
-        border: none;
-        font-family: 'Pixelify Sans', cursive;
-        /* ИСПРАВЛЕНО: Путь к курсору */
-        cursor: url('./assets/logo/cursor (1).png'), pointer;
-        clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-        transition: background 0.3s ease, transform 0.1s ease;
+        right: auto;
+        bottom: auto;
         z-index: 10;
     }
 
-    .play-game-2:hover {
-        background: #7f1ef5;
-        transform: translateX(-50%) translateY(-2px);
+    /* Второе сообщение (если нужно чуть ниже первого) */
+    .bubble {
+        top: 20% !important;
+        /* Подвигай под себя */
     }
+}
 
-    .play-game-2:active {
-        transform: translateX(-50%) scale(0.95);
-    }
+
+.answers-container {
+    position: relative;
+    top: 1rem;
+    left: auto;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin: 1rem 0 0 0;
+}
+
+.answer-btn {
+    width: 60%;
+    max-width: 250px;
+    font-size: 1.4rem;
+    padding: 12px 15px;
+    display: block;
+    margin: 0.5em auto 0;
+    text-align: center;
+}
+
+.play-game {
+    position: absolute;
+    bottom: 10rem;
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+    width: fit-content;
+    margin: 0;
+    padding: 0.8em 3em;
+    font-size: 1.6rem;
+    display: block;
+}
+
+/* ✅ ИСПРАВЛЕНО: добавлена точка перед классом и top: auto */
+.play-game-2 {
+    position: absolute;
+    bottom: 6rem;
+    left: 50%;
+    top: auto;
+    transform: translateX(-50%);
+    width: 70%;
+    margin: 0;
+    padding: 0.8em 3em;
+    font-size: 1.6rem;
+    display: block;
+
+    background: #0209CD;
+    color: white;
+    border: none;
+    font-family: 'Pixelify Sans', cursive;
+    /* ИСПРАВЛЕНО: Путь к курсору */
+    cursor: url('./assets/logo/cursor (1).png'), pointer;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    transition: background 0.3s ease, transform 0.1s ease;
+    z-index: 10;
+}
+
+.play-game-2:hover {
+    background: #7f1ef5;
+    transform: translateX(-50%) translateY(-2px);
+}
+
+.play-game-2:active {
+    transform: translateX(-50%) scale(0.95);
 }
