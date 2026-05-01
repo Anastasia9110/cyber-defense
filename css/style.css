@@ -215,7 +215,7 @@ body {
 /* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
 @media (max-width: 768px) {
     .hero-section {
-        padding: 1rem;
+        padding: 0.7rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -229,7 +229,11 @@ body {
     }
 
     .header-text {
-        margin-top: 1rem;
+        position: relative;
+        /* Обязательно для работы z-index */
+        z-index: 10;
+        /* Поднимает текст над другими слоями */
+        margin-top: 0.7rem;
         margin-left: 0;
         margin-bottom: 2rem;
         font-size: 1rem;
@@ -239,7 +243,7 @@ body {
 
     .play-game {
         position: absolute;
-        bottom: 2rem;
+        bottom: 10rem;
         left: 20%;
         margin-top: 0;
         margin-left: 0;
@@ -247,23 +251,26 @@ body {
         padding: 0.7em 2em;
         font-size: 1.5em;
         text-align: center;
+        z-index: 9999;
+        /* Добавьте это свойство */
     }
+
 
     .header-img {
         position: relative;
-        top: auto;
+        top: 0.1em;
         right: auto;
         left: 27%;
-        width: 70%;
-        max-width: 300px;
+        width: 60%;
+        max-width: 250px;
         margin: 2rem auto 0;
     }
 
     .dialog-img {
         width: 50%;
         max-width: 200px;
-        left: 25%;
-        top: 20rem;
+        left: 35%;
+        top: 17rem;
         transform: translateX(-50%) scaleX(-1);
     }
 }
