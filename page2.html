@@ -4,12 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Кибербезопасность: Тест</title>
-    <link rel="stylesheet" href="/css/page2.css" />
+    <!-- ИСПРАВЛЕНО: Путь к CSS без слэша в начале -->
+    <link rel="stylesheet" href="./css/page2.css" />
   </head>
   <body>
     <div class="game-container">
       <div id="intro-screen">
-        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+        <!-- ИСПРАВЛЕНО: Пути к картинкам -->
+        <img
+          src="./assets/img/robot.svg"
+          alt="Кибер-робот"
+          class="main-robot"
+        />
 
         <div class="robot-bubble anim-loop-1">
           Твоя миссия — распознать мошеннические сообщения среди писем, SMS и
@@ -17,7 +23,7 @@
           мошенничество!
         </div>
 
-        <div class="robot-bubble anim-loop-2 bubble">
+        <div class="robot-bubble anim-loop-2">
           Принимаем тебя в ряды экспертов. Нажимай на кнопку, чтобы разобрать
           первое сообщение. Помни: мошенники хитры!
         </div>
@@ -27,7 +33,11 @@
 
       <!-- ЭКРАН 2: ИГРА -->
       <div id="quiz-screen" style="display: none">
-        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+        <img
+          src="./assets/img/robot.svg"
+          alt="Кибер-робот"
+          class="main-robot"
+        />
 
         <div class="robot-bubble" id="game-bubble">Загрузка...</div>
 
@@ -49,8 +59,13 @@
           ДАЛЬШЕ
         </button>
       </div>
+
       <div id="finish-screen" style="display: none">
-        <img src="/assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
+        <img
+          src="./assets/img/robot.svg"
+          alt="Кибер-робот"
+          class="main-robot"
+        />
         <div class="robot-bubble anim-once" style="text-align: center">
           Поздравляем!<br /><br />
           Ты прошёл все испытания<br />
@@ -60,6 +75,7 @@
         <button class="play-game-2" onclick="location.reload()">ИГРА 2</button>
       </div>
     </div>
-    <script src="/js/script.js"></script>
+    <!-- ИСПРАВЛЕНО: Путь к JS -->
+    <script src="./js/script.js"></script>
   </body>
 </html>

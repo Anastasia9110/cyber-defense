@@ -1,25 +1,32 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyber security</title>
-    <link rel="stylesheet" href="/css/style.css" />
+    <title>Cyber Security</title>
+    <!-- ИСПРАВЛЕНО: Убрали лишний слэш в начале пути -->
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <script src="/js/script.js" defer></script>
-    <head class="hero-section">
+    <!-- Скрипт лучше ставить в конец body или в head с defer -->
+    <script src="./js/script.js" defer></script>
+
+    <!-- ИСПРАВЛЕНО: Заменили head на header (так как head внутри body быть не может) -->
+    <header class="hero-section">
       <h1 class="main-title">Кибер <br />Стражи</h1>
       <p class="header-text">
         Никаких лекций. <br />Только реальные ситуации из соцсетей и чатов.
         <br />Успеешь отличить фейк от правды? <br />Чистая практика. Проверим!
       </p>
-      <img class="header-img" src="/assets/img/robot.svg" alt="robot" />
-      <img src="/assets/logo/1.svg" alt="1" class="dialog-img" />
-      <button onclick="window.location.href = 'page2.html'" class="play-game">
+
+      <!-- ИСПРАВЛЕНО: Пути к картинкам без первого слэша -->
+      <img class="header-img" src="./assets/img/robot.svg" alt="robot" />
+      <img src="./assets/logo/1.svg" alt="1" class="dialog-img" />
+
+      <!-- Кнопка ведет на page2.html -->
+      <button onclick="window.location.href = './page2.html'" class="play-game">
         ИГРАТЬ
       </button>
-    </head>
+    </header>
   </body>
 </html>
