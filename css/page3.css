@@ -85,8 +85,10 @@ body {
 }
 
 /* =========================================
-   💬 СООБЩЕНИЯ РОБОТА
+   💬 СООБЩЕНИЯ РОБОТА (ПУЗЫРИ)
    ========================================= */
+
+/* --- ОБЛАЧКО НА ИНТРО (анимированное) --- */
 .robot-bubble {
     opacity: 0;
     position: absolute;
@@ -118,6 +120,7 @@ body {
     transition: background 0.3s ease;
 }
 
+/* Статичное облачко (для финала) */
 .static-bubble {
     opacity: 1 !important;
     visibility: visible !important;
@@ -128,6 +131,7 @@ body {
     text-align: center;
 }
 
+/* Сообщения на игровых экранах */
 .robot-message {
     display: none;
     background: linear-gradient(to right, #1E88C7, #0790d9);
@@ -276,6 +280,7 @@ body {
     transform: scale(0.95);
 }
 
+/* Кнопка ДАЛЬШЕ */
 #next-level-btn {
     position: static !important;
     margin: 10px auto 0 auto;
@@ -296,6 +301,12 @@ body {
     gap: 30px;
 }
 
+.finish-layout {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Обёртка картинки */
 .post-wrapper {
     position: relative;
     width: 650px;
@@ -317,6 +328,7 @@ body {
     object-fit: contain;
 }
 
+/* Зоны утечек */
 .hotspot {
     position: absolute;
     cursor: crosshair;
@@ -350,6 +362,7 @@ body {
     font-weight: bold;
 }
 
+/* Область робота */
 .robot-area {
     position: relative;
     display: flex;
@@ -361,6 +374,10 @@ body {
     gap: 8px;
 }
 
+.finish-robot-area {
+    margin-top: 0 !important;
+}
+
 .score-counter {
     font-family: 'Pixelify Sans', cursive;
     font-size: 1.8rem;
@@ -369,139 +386,21 @@ body {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* =========================================
-   🎉 ФИНАЛЬНЫЙ ЭКРАН
-   ========================================= */
-#finish-screen {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 40px;
-    overflow-y: auto;
+/* Сообщение на финале */
+.finish-message {
+    font-size: 1rem !important;
+    padding: 20px 30px !important;
+    max-width: 450px !important;
+    margin: 20px auto !important;
 }
 
-.finish-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-    max-width: 1200px;
-    width: 100%;
-    padding: 20px;
-}
-
-.finish-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-right: 20px;
-}
-
-.finish-title {
-    font-family: 'Pixelify Sans', cursive;
-    font-size: 3.5rem;
-    color: #00ff88;
-    text-align: left;
-    margin: 0 0 30px 0;
-    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
-    animation: fadeInUp 0.8s ease;
-    line-height: 1.1;
-}
-
-.finish-text {
-    text-align: left;
-    font-size: 1.3rem;
-    color: white;
-    margin: 0;
-    line-height: 1.8;
-    animation: fadeInUp 1s ease;
-}
-
-.finish-text p {
-    margin: 10px 0;
-}
-
-.finish-text ul {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.finish-text ul li {
-    padding: 8px 0;
-    font-size: 1.15rem;
-}
-
-.finish-text ul li:before {
-    content: "✅ ";
-    margin-right: 10px;
-}
-
-.final-praise {
-    font-size: 1.4rem !important;
-    color: #ffd700 !important;
-    font-weight: bold;
-    margin-top: 25px !important;
-    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-}
-
-.finish-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    padding-top: 20px;
-}
-
-.finish-robot {
-    width: 380px;
-    max-width: 400px;
-    margin: 0 auto;
-    display: block;
-}
-
-.finish-bubble {
-    position: absolute;
-    top: -120px;
-    right: 0;
-    left: auto;
-    transform: none;
-    max-width: 380px;
-    text-align: center;
-    font-size: 1rem;
-    padding: 15px 25px;
-    background: linear-gradient(to right, #1E88C7, #0790d9);
-    color: white;
-    border-radius: 20px;
-    border-bottom-right-radius: 0;
-    z-index: 5;
-    opacity: 1 !important;
-    visibility: visible !important;
-    animation: fadeInUp 0.5s ease !important;
-}
-
-.finish-bubble::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 25px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid transparent;
-    border-top: 10px solid #0790d9;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    z-index: -1;
-}
-
-.finish-btn {
-    margin: 30px auto 0 auto !important;
-    font-size: 2.2rem !important;
-    padding: 1.2em 5em !important;
-    animation: fadeInUp 1.2s ease;
-    z-index: 10;
-    position: relative;
+/* Кнопка ИГРА 3 */
+#finish-screen .play-game-2 {
+    position: static !important;
+    margin: 20px auto 0 auto !important;
+    display: block !important;
+    font-size: 1.6rem !important;
+    padding: 0.8em 3em !important;
 }
 
 /* =========================================
@@ -557,7 +456,7 @@ body {
         right: 2.5em !important;
     }
 
-    .robot-bubble:not(.finish-bubble) {
+    .robot-bubble:not(.finish-message) {
         font-size: 0.85rem !important;
         padding: 10px 12px !important;
         max-width: 90% !important;
@@ -596,63 +495,33 @@ body {
     }
 
     /* Финальный экран на мобильных */
-    .finish-container {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
+    .finish-layout {
+        justify-content: flex-start !important;
+        padding-top: 30px !important;
     }
 
-    .finish-left {
-        padding-right: 0;
-        align-items: center;
+    .finish-robot-area {
+        align-items: center !important;
+        text-align: center !important;
     }
 
-    .finish-title {
-        font-size: 2.3rem;
-        text-align: center;
-    }
-
-    .finish-text {
-        font-size: 1rem;
-        text-align: center;
-    }
-
-    .finish-text ul li {
-        font-size: 1rem;
-    }
-
-    .final-praise {
-        font-size: 1.1rem !important;
-    }
-
-    .finish-right {
-        padding-top: 60px;
-    }
-
-    .finish-robot {
-        width: 220px;
-        max-width: 250px;
-    }
-
-    .finish-bubble {
-        top: -90px !important;
-        right: 50% !important;
-        transform: translateX(50%) !important;
+    .finish-message {
+        position: static !important;
+        margin: 10px auto !important;
         font-size: 0.9rem !important;
-        padding: 12px 20px !important;
-        max-width: 90% !important;
-        left: auto !important;
+        max-width: 95% !important;
+        text-align: center !important;
     }
 
-    .finish-btn {
-        font-size: 1.5rem !important;
-        padding: 0.9em 4em !important;
-        margin: 40px auto 0 auto !important;
+    #finish-screen .play-game-2 {
         position: fixed !important;
         bottom: 2rem !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-        width: 70% !important;
-        max-width: 320px !important;
+        margin: 0 !important;
+        width: 65% !important;
+        max-width: 280px !important;
+        font-size: 1.3rem !important;
+        z-index: 9999 !important;
     }
 }

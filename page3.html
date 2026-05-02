@@ -11,19 +11,16 @@
       <!-- ЭКРАН 1: ИНТРО -->
       <div id="intro-screen">
         <img src="assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
-
         <div class="robot-bubble anim-loop-1">
           Твоя миссия: <br />Стань Кибер-Аудитором! Найди скрытые <br />утечки
           данных в постах вымышленного <br />пользователя и обезвредь их, пока
           <br />мошенники не успели ими воспользоваться.
         </div>
-
         <div class="robot-bubble anim-loop-2">
           Сканер заряжен на максимум! <br />
           Мошенники не пройдут. Жми на кнопку,<br />
           чтобы активировать режим Аудитора и начать охоту!
         </div>
-
         <button class="play-game" onclick="startGame()">ИГРАТЬ</button>
       </div>
 
@@ -39,14 +36,12 @@
             />
             <div id="hotspots-container"></div>
           </div>
-
           <div class="robot-area">
             <img
               src="assets/img/robot.svg"
               class="main-robot game-robot"
               alt="Робот"
             />
-
             <div class="robot-message message-1 active">
               Я вижу 5 утечек на этом билете! Сможешь найти их все?
             </div>
@@ -59,7 +54,6 @@
             <div class="robot-message message-4">
               Последний уровень! Найди все паспортные данные.
             </div>
-
             <div class="score-counter" id="score-counter">
               Найдено: <span id="found-count">0</span> /
               <span id="total-count">0</span>
@@ -75,13 +69,11 @@
         </div>
       </div>
 
-      <!-- ЭКРАН 6: ФИНАЛ (текст слева, робот справа) -->
+      <!-- ЭКРАН 6: ФИНАЛ -->
       <div id="finish-screen" class="hidden">
         <div class="finish-container">
-          <!-- ЛЕВАЯ КОЛОНКА: ТЕКСТ -->
           <div class="finish-left">
             <h1 class="finish-title">🎉 ТЫ СПРАВИЛСЯ!</h1>
-
             <div class="finish-text">
               <p>Ты нашёл все утечки!</p>
               <p>Теперь ты умеешь:</p>
@@ -94,16 +86,12 @@
               </p>
             </div>
           </div>
-
-          <!-- ПРАВАЯ КОЛОНКА: РОБОТ + ОБЛАЧКО + КНОПКА -->
           <div class="finish-right">
             <div class="robot-bubble finish-bubble">
               Отличная работа, Кибер-Аудитор!<br />
               Ты защитил свои данные! 🛡️
             </div>
-
             <img src="assets/img/robot.svg" alt="Робот" class="finish-robot" />
-
             <button
               class="play-game-2 finish-btn"
               onclick="location.href = 'page4.html'"

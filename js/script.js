@@ -57,8 +57,11 @@ function loadQuestion() {
   bubble.innerHTML = q.text;
   bubble.style.background = "linear-gradient(to right, #1E88C7, #0790d9)";
 
-  // Показываем кнопки ответов, скрываем кнопку "Дальше"
+  // Показываем кнопки ответов
   answerButtons.style.display = "flex";
+
+  // ✅ СКРЫВАЕМ кнопку "ДАЛЬШЕ" (используем и класс, и стиль для надёжности)
+  continueBtn.classList.add("hidden");
   continueBtn.style.display = "none";
 }
 
@@ -82,8 +85,11 @@ function checkAnswer(userSaidSafe) {
     bubble.innerHTML = q.explanation;
     bubble.style.background = "linear-gradient(to right, #e94560, #c73e54)";
 
-    // Скрываем ответы, показываем кнопку "Дальше"
+    // Скрываем ответы, ПОКАЗЫВАЕМ кнопку "Дальше"
     answerButtons.style.display = "none";
+
+    // ✅ ПОКАЗЫВАЕМ кнопку "ДАЛЬШЕ" (убираем класс hidden и меняем display)
+    continueBtn.classList.remove("hidden");
     continueBtn.style.display = "block";
   } else {
     // Если правильно — сразу следующий вопрос

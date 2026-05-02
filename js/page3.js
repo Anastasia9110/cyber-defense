@@ -25,7 +25,6 @@ const levels = [
   },
 ];
 
-// ✅ ТОЧНЫЕ ЗОНЫ (координаты не менял)
 const zonesData = [
   [
     { top: "36%", left: "40%", w: "16%", h: "6%" },
@@ -62,25 +61,20 @@ function loadLevel(index) {
     document.getElementById("finish-screen").classList.remove("hidden");
     return;
   }
-
   currentLevel = index;
   foundCount = 0;
   const level = levels[index];
-
   document
     .querySelectorAll(".robot-message")
     .forEach((msg) => msg.classList.remove("active"));
   document.querySelector("." + level.messageClass).classList.add("active");
-
   document.getElementById("leak-image").src = level.image;
   document.getElementById("found-count").textContent = 0;
   document.getElementById("total-count").textContent = level.total;
   document.getElementById("score-counter").classList.remove("hidden");
   document.getElementById("next-level-btn").classList.add("hidden");
-
   const container = document.getElementById("hotspots-container");
   container.innerHTML = "";
-
   zonesData[index].forEach((zone) => {
     const div = document.createElement("div");
     div.className = "hotspot";
@@ -88,19 +82,14 @@ function loadLevel(index) {
     div.style.left = zone.left;
     div.style.width = zone.w;
     div.style.height = zone.h;
-
     div.addEventListener("click", function () {
       if (!this.classList.contains("found")) {
         this.classList.add("found");
         foundCount++;
         document.getElementById("found-count").textContent = foundCount;
-
-        if (foundCount === level.total) {
-          levelComplete(level.hint);
-        }
+        if (foundCount === level.total) levelComplete(level.hint);
       }
     });
-
     container.appendChild(div);
   });
 }
@@ -108,7 +97,6 @@ function loadLevel(index) {
 function levelComplete(hintText) {
   const activeMessage = document.querySelector(".robot-message.active");
   activeMessage.innerHTML = hintText;
-
   document.getElementById("score-counter").classList.add("hidden");
   document.getElementById("next-level-btn").classList.remove("hidden");
 }
