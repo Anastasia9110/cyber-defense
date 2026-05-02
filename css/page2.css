@@ -282,29 +282,34 @@ body {
 }
 
 
-.answers-container {
-    position: relative;
-    top: 1rem;
-    left: auto;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin: 1rem 0 0 0;
-}
+@media (max-width: 768px) {
+    .answers-container {
+        position: absolute !important;
+        top: 68% !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        gap: 10px !important;
+        width: 100% !important;
+        z-index: 100 !important;
+    }
 
-.answer-btn {
-    width: 60%;
-    max-width: 250px;
-    font-size: 1.4rem;
-    padding: 12px 15px;
-    display: block;
-    margin: 0.5em auto 0;
-    text-align: center;
+    .answer-btn {
+        width: 60% !important;
+        max-width: 280px !important;
+        font-size: 1.4rem !important;
+        padding: 15px 20px !important;
+        display: block !important;
+        margin: 0 !important;
+        text-align: center !important;
+    }
 }
 
 .play-game {
     position: absolute;
-    bottom: 10rem;
+    bottom: 6rem;
     left: 50%;
     top: auto;
     transform: translateX(-50%);
