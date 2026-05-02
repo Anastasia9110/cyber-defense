@@ -152,19 +152,51 @@ body {
 .play-game {
     position: absolute;
     top: 20em;
-    left: 20%;
-    transform: translateX(-50%);
+    left: 10% !important;
+    /* Принудительно сдвигает влево */
+    right: auto !important;
+    /* Отменяет привязку справа, если она есть */
+    transform: none !important;
+    /* Полностью убирает любые сдвиги */
+    margin-left: 0 !important;
+    /* Убирает лишние отступы */
+
     background: #0209CD;
     color: white;
     border: none;
-    padding: 0.9em 4em;
+    padding: 0.9em 2.5em;
     font-family: 'Pixelify Sans', cursive;
     font-size: 1.8em;
-    /* ИСПРАВЛЕНО: Путь к курсору */
     cursor: url('./assets/logo/cursor (1).png'), pointer;
     clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-    transition: background 0.3s ease, transform 0.1s ease;
+    transition: background 0.3s ease;
     z-index: 10;
+    width: fit-content;
+    display: inline-block;
+}
+
+.play-game-2 {
+    position: absolute;
+    top: 80%;
+    left: 10% !important;
+    /* Тот же отступ слева */
+    right: auto !important;
+    transform: none !important;
+    margin-left: 0 !important;
+    display: inline-block;
+    width: auto;
+    max-width: 320px;
+    padding: 0.9em 2.2em;
+    background: #0209CD;
+    color: white;
+    border: none;
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 1.8em;
+    cursor: url('./assets/logo/cursor (1).png'), pointer;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    transition: background 0.3s ease;
+    z-index: 10;
+    white-space: nowrap;
 }
 
 .play-game:hover {
@@ -174,24 +206,6 @@ body {
 
 .play-game:active {
     transform: translateX(-50%) scale(0.95);
-}
-
-.play-game-2 {
-    position: absolute;
-    top: 80%;
-    left: 20%;
-    transform: translateX(-50%);
-    background: #0209CD;
-    color: white;
-    border: none;
-    padding: 0.9em 4em;
-    font-family: 'Pixelify Sans', cursive;
-    font-size: 1.8em;
-    /* ИСПРАВЛЕНО: Путь к курсору */
-    cursor: url('./assets/logo/cursor (1).png'), pointer;
-    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-    transition: background 0.3s ease, transform 0.1s ease;
-    z-index: 10;
 }
 
 .play-game-2:hover {
@@ -245,9 +259,6 @@ body {
     z-index: 1;
 }
 
-/* =========================================
-   МОБИЛЬНАЯ ВЕРСИЯ
-   ========================================= */
 @media (max-width: 768px) {
     .main-robot {
         position: relative;
