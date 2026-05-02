@@ -4,18 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Кибербезопасность: Тест</title>
-    <!-- ИСПРАВЛЕНО: Путь к CSS без слэша в начале -->
-    <link rel="stylesheet" href="./css/page2.css" />
+    <!-- ИСПРАВЛЕНО: Убрана точка в начале пути -->
+    <link rel="stylesheet" href="css/page2.css" />
   </head>
   <body>
     <div class="game-container">
       <div id="intro-screen">
-        <!-- ИСПРАВЛЕНО: Пути к картинкам -->
-        <img
-          src="./assets/img/robot.svg"
-          alt="Кибер-робот"
-          class="main-robot"
-        />
+        <!-- ИСПРАВЛЕНО: Убрана точка в начале пути к картинкам -->
+        <img src="assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
 
         <div class="robot-bubble anim-loop-1">
           Твоя миссия — распознать мошеннические сообщения среди писем, SMS и
@@ -33,11 +29,7 @@
 
       <!-- ЭКРАН 2: ИГРА -->
       <div id="quiz-screen" style="display: none">
-        <img
-          src="./assets/img/robot.svg"
-          alt="Кибер-робот"
-          class="main-robot"
-        />
+        <img src="assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
 
         <div class="robot-bubble" id="game-bubble">Загрузка...</div>
 
@@ -61,11 +53,7 @@
       </div>
 
       <div id="finish-screen" style="display: none">
-        <img
-          src="./assets/img/robot.svg"
-          alt="Кибер-робот"
-          class="main-robot"
-        />
+        <img src="assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
         <div class="robot-bubble anim-once" style="text-align: center">
           Поздравляем!<br /><br />
           Ты прошёл все испытания<br />
@@ -74,13 +62,13 @@
         </div>
         <button
           class="play-game-2"
-          onclick="window.location.href = './page3.html'"
+          onclick="window.location.href = 'page3.html'"
         >
           ИГРА 2
         </button>
       </div>
     </div>
-    <!-- ИСПРАВЛЕНО: Путь к JS -->
-    <script src="./js/script.js"></script>
+    <!-- ИСПРАВЛЕНО: Убрана точка в начале пути к JS -->
+    <script src="js/script.js"></script>
   </body>
 </html>

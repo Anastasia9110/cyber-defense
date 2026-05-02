@@ -1,19 +1,23 @@
-/* Твои шрифты */
+/* =========================================
+   ШРИФТЫ (ИСПРАВЛЕНЫ ПУТИ)
+   ========================================= */
 @font-face {
     font-family: 'Montserrat';
-    src: url('./assets/fonts/Montserrat-Thin.woff2') format('woff2');
+    src: url('../assets/fonts/Montserrat-Thin.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Pixelify Sans';
-    src: url('./assets/fonts/PixelifySans-Regular.woff2') format('woff2');
+    src: url('../assets/fonts/PixelifySans-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 
-/* Обнуление */
+/* =========================================
+   ОБНУЛЕНИЕ И БАЗА
+   ========================================= */
 * {
     padding: 0;
     margin: 0;
@@ -40,6 +44,9 @@ body {
     height: 100vh;
 }
 
+/* =========================================
+   ПУЗЫРИ СООБЩЕНИЙ И АНИМАЦИИ
+   ========================================= */
 .robot-bubble {
     opacity: 0;
     position: absolute;
@@ -58,7 +65,6 @@ body {
     font-size: 0.95rem;
 }
 
-/* Хвостик */
 .robot-bubble::after {
     content: "";
     position: absolute;
@@ -149,74 +155,56 @@ body {
     }
 }
 
-.play-game {
+/* =========================================
+   КНОПКИ (ДЕСКТОП)
+   ========================================= */
+.play-game,
+.play-game-2 {
     position: absolute;
-    top: 20em;
-    left: 10% !important;
-    /* Принудительно сдвигает влево */
-    right: auto !important;
-    /* Отменяет привязку справа, если она есть */
-    transform: none !important;
-    /* Полностью убирает любые сдвиги */
-    margin-left: 0 !important;
-    /* Убирает лишние отступы */
-
     background: #0209CD;
     color: white;
     border: none;
-    padding: 0.9em 2.5em;
     font-family: 'Pixelify Sans', cursive;
-    font-size: 1.8em;
-    cursor: url('./assets/logo/cursor (1).png'), pointer;
+    cursor: url('../assets/logo/cursor.png'), pointer;
     clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-    transition: background 0.3s ease;
+    transition: background 0.3s ease, transform 0.1s ease;
     z-index: 10;
     width: fit-content;
     display: inline-block;
+    transform: none;
+    /* Важно: убирает сдвиг по горизонтали */
+}
+
+.play-game {
+    top: 20em;
+    left: 10%;
+    padding: 0.9em 2.5em;
+    font-size: 1.8em;
 }
 
 .play-game-2 {
-    position: absolute;
     top: 80%;
-    left: 10% !important;
-    /* Тот же отступ слева */
-    right: auto !important;
-    transform: none !important;
-    margin-left: 0 !important;
-    display: inline-block;
-    width: auto;
-    max-width: 320px;
+    left: 10%;
     padding: 0.9em 2.2em;
-    background: #0209CD;
-    color: white;
-    border: none;
-    font-family: 'Pixelify Sans', cursive;
     font-size: 1.8em;
-    cursor: url('./assets/logo/cursor (1).png'), pointer;
-    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-    transition: background 0.3s ease;
-    z-index: 10;
     white-space: nowrap;
 }
 
-.play-game:hover {
-    background: #7f1ef5;
-    transform: translateX(-50%) translateY(-2px);
-}
-
-.play-game:active {
-    transform: translateX(-50%) scale(0.95);
-}
-
+.play-game:hover,
 .play-game-2:hover {
     background: #7f1ef5;
-    transform: translateX(-50%) translateY(-2px);
+    transform: translateY(-2px);
+    /* Только вертикальный сдвиг, не ломает позицию */
 }
 
+.play-game:active,
 .play-game-2:active {
-    transform: translateX(-50%) scale(0.95);
+    transform: scale(0.95);
 }
 
+/* =========================================
+   КНОПКИ ОТВЕТОВ И РОБОТ (ДЕСКТОП)
+   ========================================= */
 .answers-container {
     position: absolute;
     top: 50%;
@@ -259,6 +247,9 @@ body {
     z-index: 1;
 }
 
+/* =========================================
+   АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ (ОДИН БЛОК)
+   ========================================= */
 @media (max-width: 768px) {
     .main-robot {
         position: relative;
@@ -272,11 +263,8 @@ body {
 
     .robot-bubble {
         position: absolute;
-        /* Точное позиционирование по экрану */
         top: 5%;
-        /* ⬆️ ЧЕМ МЕНЬШЕ %, ТЕМ ВЫШЕ. Попробуй 10%, 12%, 15% */
         left: 10%;
-        /* Центрируем по горизонтали */
         transform: translateX(-50%);
         width: 55%;
         margin: 0;
@@ -285,15 +273,10 @@ body {
         z-index: 10;
     }
 
-    /* Второе сообщение (если нужно чуть ниже первого) */
     .bubble {
         top: 20% !important;
-        /* Подвигай под себя */
     }
-}
 
-
-@media (max-width: 768px) {
     .answers-container {
         position: absolute !important;
         top: 68% !important;
@@ -316,50 +299,27 @@ body {
         margin: 0 !important;
         text-align: center !important;
     }
-}
 
-.play-game {
-    position: absolute;
-    bottom: 6rem;
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%);
-    width: fit-content;
-    margin: 0;
-    padding: 0.8em 3em;
-    font-size: 1.6rem;
-    display: block;
-}
+    /* Кнопки ИГРАТЬ / ДАЛЬШЕ / ИГРА 2 на мобильном */
+    .play-game,
+    .play-game-2 {
+        position: fixed !important;
+        bottom: 2rem !important;
+        left: 50% !important;
+        top: auto !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        width: 70% !important;
+        max-width: 300px !important;
+        padding: 0.8em 2em !important;
+        font-size: 1.5rem !important;
+        display: block !important;
+        z-index: 9999 !important;
+    }
 
-/* ✅ ИСПРАВЛЕНО: добавлена точка перед классом и top: auto */
-.play-game-2 {
-    position: absolute;
-    bottom: 6rem;
-    left: 50%;
-    top: auto;
-    transform: translateX(-50%);
-    width: 70%;
-    margin: 0;
-    padding: 0.8em 3em;
-    font-size: 1.6rem;
-    display: block;
-
-    background: #0209CD;
-    color: white;
-    border: none;
-    font-family: 'Pixelify Sans', cursive;
-    /* ИСПРАВЛЕНО: Путь к курсору */
-    cursor: url('./assets/logo/cursor (1).png'), pointer;
-    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
-    transition: background 0.3s ease, transform 0.1s ease;
-    z-index: 10;
-}
-
-.play-game-2:hover {
-    background: #7f1ef5;
-    transform: translateX(-50%) translateY(-2px);
-}
-
-.play-game-2:active {
-    transform: translateX(-50%) scale(0.95);
+    /* Убираем трансформацию при наведении на мобильном, чтобы не сбивать центрирование */
+    .play-game:hover,
+    .play-game-2:hover {
+        transform: none !important;
+    }
 }

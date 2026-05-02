@@ -1,7 +1,7 @@
 /* Montserrat Thin (очень тонкий) */
 @font-face {
     font-family: 'Montserrat';
-    src: url('./assets/fonts/Montserrat-Thin.woff2') format('woff2');
+    src: url('../assets/fonts/Montserrat-Thin.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
 }
@@ -9,7 +9,7 @@
 /* Montserrat Thin Italic (тонкий курсив) */
 @font-face {
     font-family: 'Montserrat';
-    src: url('./assets/fonts/Montserrat-ThinItalic.woff2') format('woff2');
+    src: url('../assets/fonts/Montserrat-ThinItalic.woff2') format('woff2');
     font-weight: 100;
     font-style: italic;
 }
@@ -17,7 +17,7 @@
 /* Pixelify Sans Regular (пиксельный шрифт) */
 @font-face {
     font-family: 'Pixelify Sans';
-    src: url('./assets/fonts/PixelifySans-Regular.woff2') format('woff2');
+    src: url('../assets/fonts/PixelifySans-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
@@ -152,7 +152,8 @@ body {
     margin-bottom: 0;
     font-family: 'Pixelify Sans', cursive;
     font-size: 1.8em;
-    cursor: url('./assets/logo/cursor (1).png'), auto;
+    /* ИСПРАВЛЕНО: путь ../ выходит из папки css в корень, убраны пробелы в имени файла */
+    cursor: url('../assets/logo/cursor.png'), auto;
     outline: none;
     clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
     transition: background 0.3s ease, transform 0.1s ease;
@@ -172,7 +173,6 @@ body {
 .header-img {
     position: absolute;
     top: 1rem;
-    /* Было top: rem; (ошибка синтаксиса) */
     right: 7%;
     width: 35%;
     max-width: 500px;
