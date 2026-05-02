@@ -3,31 +3,117 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Кибербезопасность: Тест</title>
+    <title>Кибер-Аудитор: Найди утечки</title>
     <link rel="stylesheet" href="css/page3.css" />
   </head>
   <body>
-    <script src="./js/page3.js"></script>
     <div class="game-container">
+      <!-- ЭКРАН 1: ИНТРО -->
       <div id="intro-screen">
-        <img
-          src="./assets/img/robot.svg"
-          alt="Кибер-робот"
-          class="main-robot"
-        />
+        <img src="assets/img/robot.svg" alt="Кибер-робот" class="main-robot" />
 
         <div class="robot-bubble anim-loop-1">
-          Твоя миссия: <br>Стань Кибер-Аудитором! Найди скрытые <br>утечки данных в постах вымышленного <br>пользователя и обезвредь их, пока <br>мошенники не успели ими воспользоваться.
+          Твоя миссия: <br />Стань Кибер-Аудитором! Найди скрытые <br />утечки
+          данных в постах вымышленного <br />пользователя и обезвредь их, пока
+          <br />мошенники не успели ими воспользоваться.
         </div>
 
         <div class="robot-bubble anim-loop-2">
-          Принимаем тебя в ряды экспертов. Нажимай на кнопку, чтобы разобрать
-          первое сообщение. Помни: мошенники хитры!
+          Сканер заряжен на максимум! <br />
+          Мошенники не пройдут. Жми на кнопку,<br />
+          чтобы активировать режим Аудитора и начать охоту!
         </div>
 
         <button class="play-game" onclick="startGame()">ИГРАТЬ</button>
       </div>
 
-      
+      <!-- ЭКРАНЫ 2-5: ИГРА -->
+      <div id="leak-game-screen" class="hidden">
+        <div class="game-layout">
+          <div class="post-wrapper">
+            <img
+              id="leak-image"
+              src=""
+              alt="Пост для анализа"
+              class="post-img"
+            />
+            <div id="hotspots-container"></div>
+          </div>
+
+          <div class="robot-area">
+            <img
+              src="assets/img/robot.svg"
+              class="main-robot game-robot"
+              alt="Робот"
+            />
+
+            <div class="robot-message message-1 active">
+              Я вижу 5 утечек на этом билете! Сможешь найти их все?
+            </div>
+            <div class="robot-message message-2">
+              Интересно, сможешь ли в этот раз найти все ошибки?
+            </div>
+            <div class="robot-message message-3">
+              Найди все данные карты, которые нельзя показывать!
+            </div>
+            <div class="robot-message message-4">
+              Последний уровень! Найди все паспортные данные.
+            </div>
+
+            <div class="score-counter" id="score-counter">
+              Найдено: <span id="found-count">0</span> /
+              <span id="total-count">0</span>
+            </div>
+            <button
+              id="next-level-btn"
+              class="play-game hidden"
+              onclick="nextLevel()"
+            >
+              ДАЛЬШЕ
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ЭКРАН 6: ФИНАЛ (текст слева, робот справа) -->
+      <div id="finish-screen" class="hidden">
+        <div class="finish-container">
+          <!-- ЛЕВАЯ КОЛОНКА: ТЕКСТ -->
+          <div class="finish-left">
+            <h1 class="finish-title">🎉 ТЫ СПРАВИЛСЯ!</h1>
+
+            <div class="finish-text">
+              <p>Ты нашёл все утечки!</p>
+              <p>Теперь ты умеешь:</p>
+              <ul>
+                <li>Видеть опасные зоны на фото за секунду</li>
+                <li>Замазывать то, что не должны видеть другие</li>
+              </ul>
+              <p class="final-praise">
+                Мошенники плачут, потому что ты слишком крут! 🔥
+              </p>
+            </div>
+          </div>
+
+          <!-- ПРАВАЯ КОЛОНКА: РОБОТ + ОБЛАЧКО + КНОПКА -->
+          <div class="finish-right">
+            <div class="robot-bubble finish-bubble">
+              Отличная работа, Кибер-Аудитор!<br />
+              Ты защитил свои данные! 🛡️
+            </div>
+
+            <img src="assets/img/robot.svg" alt="Робот" class="finish-robot" />
+
+            <button
+              class="play-game-2 finish-btn"
+              onclick="location.href = 'page4.html'"
+            >
+              ИГРА 3
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/page3.js"></script>
   </body>
 </html>

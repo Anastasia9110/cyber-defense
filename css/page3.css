@@ -1,19 +1,30 @@
-/* Твои шрифты */
+/* =========================================
+   ШРИФТЫ
+   ========================================= */
 @font-face {
     font-family: 'Montserrat';
-    src: url('./assets/fonts/Montserrat-Thin.woff2') format('woff2');
+    src: url('../assets/fonts/Montserrat-Thin.woff2') format('woff2');
     font-weight: 100;
     font-style: normal;
 }
 
 @font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/Montserrat-ThinItalic.woff2') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+}
+
+@font-face {
     font-family: 'Pixelify Sans';
-    src: url('./assets/fonts/PixelifySans-Regular.woff2') format('woff2');
+    src: url('../assets/fonts/PixelifySans-Regular.woff2') format('woff2');
     font-weight: 400;
     font-style: normal;
 }
 
-/* Обнуление */
+/* =========================================
+   ОБНУЛЕНИЕ И БАЗА
+   ========================================= */
 * {
     padding: 0;
     margin: 0;
@@ -32,4 +43,616 @@ body {
     background: linear-gradient(-56deg, #121217, #010346);
     font-family: 'Montserrat', sans-serif;
     overflow: hidden;
+}
+
+.game-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =========================================
+   🤖 РОБОТ
+   ========================================= */
+.main-robot {
+    width: 380px !important;
+    max-width: 400px !important;
+    height: auto !important;
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+#intro-screen .main-robot {
+    right: 8%;
+    width: 400px !important;
+    max-width: 450px !important;
+}
+
+.game-robot {
+    position: static !important;
+    transform: none !important;
+    width: 360px !important;
+    max-width: 360px !important;
+    margin: 0 auto 5px auto;
+    display: block;
+}
+
+/* =========================================
+   💬 СООБЩЕНИЯ РОБОТА
+   ========================================= */
+.robot-bubble {
+    opacity: 0;
+    position: absolute;
+    top: 5rem;
+    right: 35%;
+    padding: 15px 25px;
+    background: linear-gradient(to right, #1E88C7, #0790d9);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    z-index: 3;
+    will-change: opacity, transform;
+    max-width: 450px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.robot-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: -15px;
+    width: 25px;
+    height: 25px;
+    background: #0790d9;
+    clip-path: polygon(0 0, 0% 100%, 100% 100%);
+    z-index: -1;
+    transition: background 0.3s ease;
+}
+
+.static-bubble {
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: none !important;
+    position: static !important;
+    margin: 15px auto !important;
+    max-width: 400px;
+    text-align: center;
+}
+
+.robot-message {
+    display: none;
+    background: linear-gradient(to right, #1E88C7, #0790d9);
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    padding: 15px 25px;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    max-width: 80%;
+    width: 250px;
+    line-height: 1.5;
+    font-size: 0.95rem;
+    text-align: center;
+    position: absolute;
+    top: 1em;
+    right: 23em;
+    left: auto;
+    transform: none;
+    z-index: 100;
+    margin: 0;
+}
+
+.robot-message.active {
+    display: block;
+}
+
+.robot-message::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-top: 10px solid #0790d9;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    z-index: -1;
+}
+
+/* Анимации */
+.anim-loop-1 {
+    animation: lifeCycle1 25s ease-in-out infinite;
+}
+
+.anim-loop-2 {
+    animation: lifeCycle2 25s ease-in-out infinite;
+}
+
+.anim-once {
+    animation: fadeInUp 0.5s ease forwards;
+}
+
+@keyframes lifeCycle1 {
+
+    0%,
+    5% {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    10%,
+    45% {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+}
+
+@keyframes lifeCycle2 {
+
+    0%,
+    55% {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    60%,
+    95% {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        visibility: hidden;
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+        visibility: hidden;
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+    }
+}
+
+/* =========================================
+   🎮 КНОПКИ
+   ========================================= */
+.play-game,
+.play-game-2 {
+    position: absolute;
+    background: #0209CD;
+    color: white;
+    border: none;
+    font-family: 'Pixelify Sans', cursive;
+    cursor: url('../assets/logo/cursor.png'), pointer;
+    clip-path: polygon(12% 0, 100% 0, 88% 100%, 0% 100%);
+    transition: background 0.3s ease, transform 0.1s ease;
+    z-index: 10;
+    width: fit-content;
+    display: inline-block;
+}
+
+.play-game {
+    top: 20em;
+    left: 10%;
+    padding: 0.9em 2.5em;
+    font-size: 1.8em;
+}
+
+.play-game:hover {
+    background: #7f1ef5;
+    transform: translateY(-2px);
+}
+
+.play-game:active {
+    transform: scale(0.95);
+}
+
+#next-level-btn {
+    position: static !important;
+    margin: 10px auto 0 auto;
+    display: block;
+    font-size: 1.4rem !important;
+    padding: 0.7em 2em !important;
+}
+
+/* =========================================
+   🖼 ИГРОВОЙ ЭКРАН
+   ========================================= */
+.game-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 40px 60px 40px 50px;
+    gap: 30px;
+}
+
+.post-wrapper {
+    position: relative;
+    width: 650px;
+    max-width: 80vw;
+    margin: 0 0 0 40px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.post-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 100vh;
+    border-radius: 15px;
+    box-shadow: none !important;
+    background: transparent !important;
+    display: block;
+    object-fit: contain;
+}
+
+.hotspot {
+    position: absolute;
+    cursor: crosshair;
+    border: 2px dashed transparent;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.hotspot:hover {
+    border-color: transparent;
+    background: transparent;
+}
+
+.hotspot.found {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid #00ff88;
+    cursor: default;
+    pointer-events: none;
+}
+
+.hotspot.found::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #00ff88;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.robot-area {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 380px;
+    flex-shrink: 0;
+    margin-top: 60px !important;
+    gap: 8px;
+}
+
+.score-counter {
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 1.8rem;
+    color: white;
+    margin: 5px 0 !important;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* =========================================
+   🎉 ФИНАЛЬНЫЙ ЭКРАН
+   ========================================= */
+#finish-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.finish-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: start;
+    max-width: 1200px;
+    width: 100%;
+    padding: 20px;
+}
+
+.finish-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-right: 20px;
+}
+
+.finish-title {
+    font-family: 'Pixelify Sans', cursive;
+    font-size: 3.5rem;
+    color: #00ff88;
+    text-align: left;
+    margin: 0 0 30px 0;
+    text-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+    animation: fadeInUp 0.8s ease;
+    line-height: 1.1;
+}
+
+.finish-text {
+    text-align: left;
+    font-size: 1.3rem;
+    color: white;
+    margin: 0;
+    line-height: 1.8;
+    animation: fadeInUp 1s ease;
+}
+
+.finish-text p {
+    margin: 10px 0;
+}
+
+.finish-text ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.finish-text ul li {
+    padding: 8px 0;
+    font-size: 1.15rem;
+}
+
+.finish-text ul li:before {
+    content: "✅ ";
+    margin-right: 10px;
+}
+
+.final-praise {
+    font-size: 1.4rem !important;
+    color: #ffd700 !important;
+    font-weight: bold;
+    margin-top: 25px !important;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.finish-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding-top: 20px;
+}
+
+.finish-robot {
+    width: 380px;
+    max-width: 400px;
+    margin: 0 auto;
+    display: block;
+}
+
+.finish-bubble {
+    position: absolute;
+    top: -120px;
+    right: 0;
+    left: auto;
+    transform: none;
+    max-width: 380px;
+    text-align: center;
+    font-size: 1rem;
+    padding: 15px 25px;
+    background: linear-gradient(to right, #1E88C7, #0790d9);
+    color: white;
+    border-radius: 20px;
+    border-bottom-right-radius: 0;
+    z-index: 5;
+    opacity: 1 !important;
+    visibility: visible !important;
+    animation: fadeInUp 0.5s ease !important;
+}
+
+.finish-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 25px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-top: 10px solid #0790d9;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    z-index: -1;
+}
+
+.finish-btn {
+    margin: 30px auto 0 auto !important;
+    font-size: 2.2rem !important;
+    padding: 1.2em 5em !important;
+    animation: fadeInUp 1.2s ease;
+    z-index: 10;
+    position: relative;
+}
+
+/* =========================================
+   📱 АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ
+   ========================================= */
+@media (max-width: 768px) {
+    .main-robot {
+        width: 180px !important;
+        max-width: 180px !important;
+        right: 50% !important;
+        transform: translateX(50%) translateY(-50%) !important;
+    }
+
+    .game-robot {
+        position: static !important;
+        transform: none !important;
+        width: 160px !important;
+        margin: 0 auto 10px auto !important;
+    }
+
+    .game-layout {
+        flex-direction: column !important;
+        padding: 15px !important;
+        height: auto !important;
+        min-height: 100vh !important;
+        overflow-y: auto !important;
+    }
+
+    .post-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        order: 2 !important;
+    }
+
+    .post-img {
+        max-height: 60vh !important;
+    }
+
+    .robot-area {
+        width: 100% !important;
+        order: 1 !important;
+        margin-top: 10px !important;
+        margin-bottom: 15px !important;
+        gap: 8px !important;
+    }
+
+    .robot-message {
+        font-size: 0.85rem !important;
+        padding: 10px 12px !important;
+        max-width: 95% !important;
+        top: 0.5em !important;
+        right: 2.5em !important;
+    }
+
+    .robot-bubble:not(.finish-bubble) {
+        font-size: 0.85rem !important;
+        padding: 10px 12px !important;
+        max-width: 90% !important;
+        top: 5% !important;
+        right: 5% !important;
+    }
+
+    .score-counter {
+        font-size: 1.3rem !important;
+        margin: 5px 0 !important;
+    }
+
+    #next-level-btn {
+        position: fixed !important;
+        bottom: 2rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        width: 65% !important;
+        max-width: 280px !important;
+        font-size: 1.3rem !important;
+        padding: 0.7em 2em !important;
+        z-index: 9999 !important;
+    }
+
+    .play-game:not(#next-level-btn) {
+        position: fixed !important;
+        bottom: 2rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        width: 65% !important;
+        max-width: 300px !important;
+        font-size: 1.4rem !important;
+        z-index: 9999 !important;
+    }
+
+    /* Финальный экран на мобильных */
+    .finish-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .finish-left {
+        padding-right: 0;
+        align-items: center;
+    }
+
+    .finish-title {
+        font-size: 2.3rem;
+        text-align: center;
+    }
+
+    .finish-text {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .finish-text ul li {
+        font-size: 1rem;
+    }
+
+    .final-praise {
+        font-size: 1.1rem !important;
+    }
+
+    .finish-right {
+        padding-top: 60px;
+    }
+
+    .finish-robot {
+        width: 220px;
+        max-width: 250px;
+    }
+
+    .finish-bubble {
+        top: -90px !important;
+        right: 50% !important;
+        transform: translateX(50%) !important;
+        font-size: 0.9rem !important;
+        padding: 12px 20px !important;
+        max-width: 90% !important;
+        left: auto !important;
+    }
+
+    .finish-btn {
+        font-size: 1.5rem !important;
+        padding: 0.9em 4em !important;
+        margin: 40px auto 0 auto !important;
+        position: fixed !important;
+        bottom: 2rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 70% !important;
+        max-width: 320px !important;
+    }
 }
