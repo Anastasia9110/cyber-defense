@@ -557,14 +557,17 @@ body {
     }
 }
 
+/* =========================================
+   📱 АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ (ПОЛНАЯ)
+   ========================================= */
 @media (max-width: 768px) {
 
-    /* --- РОБОТЫ --- */
+    /* 🤖 РОБОТЫ */
     #intro-screen .main-robot {
-        width: 75% !important;
-        max-width: 250px !important;
+        width: 65% !important;
+        max-width: 210px !important;
         position: relative !important;
-        top: 10em !important;
+        top: 7em !important;
         left: 4em !important;
         transform: none !important;
         margin: 20px auto 15px auto !important;
@@ -584,23 +587,21 @@ body {
         display: block !important;
     }
 
-    /* --- ЛЕЙАУТ --- */
+    /* 📐 ЛЕЙАУТ */
     .game-layout {
         flex-direction: column !important;
         padding: 5px 0 !important;
         height: auto !important;
         min-height: 100vh !important;
         overflow-y: auto !important;
+        align-items: center !important;
     }
 
-    /* ✅ КАРТИНКА ПОСТА (ИСПРАВЛЕНО: БОЛЬШАЯ И ПРОПОРЦИОНАЛЬНАЯ) */
+    /* 🖼 КАРТИНКА ПОСТА (СДЕЛАНА БОЛЬШЕ) */
     .post-wrapper {
-        width: 96vw !important;
-        /* Почти во всю ширину экрана */
-        max-width: 96vw !important;
-        /* Защита от горизонтального скролла */
-        margin: 15px auto 90px auto !important;
-        /* Отступ снизу под фиксированную кнопку */
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 10px auto 70px auto !important;
         padding: 0 !important;
         box-sizing: border-box !important;
         order: 2 !important;
@@ -611,28 +612,25 @@ body {
     .post-img {
         width: 100% !important;
         height: auto !important;
-        max-height: none !important;
-        /* Убираем ограничение высоты */
+        max-height: 80vh !important;
         min-height: auto !important;
         display: block !important;
         object-fit: contain !important;
-        /* Сохраняет пропорции, не обрезает */
         border-radius: 12px !important;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* --- КНОПКИ (ФИКСИРОВАННЫЕ ВНИЗУ) --- */
+    /* 🔘 КНОПКИ В ИГРЕ */
     #next-level-btn,
-    .play-game:not(#next-level-btn),
-    .play-game-2 {
+    .play-game:not(#next-level-btn) {
         position: fixed !important;
         left: 50% !important;
         bottom: 5px !important;
         transform: translateX(-50%) !important;
-        height: 50px !important;
-        min-height: 50px !important;
-        max-height: 50px !important;
-        width: 60% !important;
+        height: 55px !important;
+        min-height: 55px !important;
+        max-height: 55px !important;
+        width: 65% !important;
         max-width: 240px !important;
         margin: 0 !important;
         padding: 0 !important;
@@ -640,55 +638,11 @@ body {
         align-items: center !important;
         justify-content: center !important;
         z-index: 10000 !important;
-    }
-
-    /* --- ОСТАЛЬНЫЕ ЭЛЕМЕНТЫ --- */
-    .robot-area {
-        width: 100% !important;
-        order: 1 !important;
-    }
-
-    .robot-message {
-        position: absolute !important;
-        top: 1em !important;
-        left: 30% !important;
-        transform: translateX(-50%) !important;
-        width: 80% !important;
-        max-width: 200px !important;
-        font-size: 0.85rem !important;
-        padding: 10px 12px !important;
-        text-align: center !important;
-        z-index: 9999 !important;
-    }
-
-    .robot-bubble:not(.finish-bubble) {
-        font-size: 0.85rem !important;
-        padding: 10px 12px !important;
-        max-width: 90% !important;
-        top: 1% !important;
-        left: 5% !important;
-        width: 60%;
-        position: absolute !important;
-        z-index: 9999 !important;
-    }
-
-    .robot-bubble.bubble {
-        top: 10% !important;
-    }
-
-    .score-counter {
-        font-size: 1.3rem !important;
-        position: relative !important;
-        top: 40px !important;
-        margin: 5px 0 !important;
-        text-align: center !important;
-        width: 100% !important;
-        display: block !important;
+        font-size: 1.15rem !important;
     }
 
     #next-level-btn:hover,
-    .play-game:hover,
-    .play-game-2:hover {
+    .play-game:hover {
         transform: translateX(-50%) translateY(-2px) !important;
         background: #7F1EF5 !important;
     }
@@ -699,52 +653,208 @@ body {
         visibility: hidden !important;
     }
 
-    /* --- ФИНАЛЬНЫЙ ЭКРАН НА ТЕЛЕФОНЕ --- */
+    /* 💬 СООБЩЕНИЯ */
+    .robot-message {
+        position: absolute !important;
+        top: 1.5em !important;
+        left: 30% !important;
+        transform: translateX(-50%) !important;
+        width: 50% !important;
+        max-width: 50% !important;
+        font-size: 0.85rem !important;
+        padding: 10px 12px !important;
+        text-align: center !important;
+        z-index: 9999 !important;
+    }
+
+    .robot-bubble:not(.finish-bubble) {
+        font-size: 0.8rem !important;
+        padding: 8px 10px !important;
+        width: 40% !important;
+        max-width: 50% !important;
+        top: 3% !important;
+        left: 25% !important;
+        transform: translateX(-50%) !important;
+        position: absolute !important;
+        z-index: 9999 !important;
+        text-align: center !important;
+    }
+
+    .robot-bubble.bubble {
+        top: 5% !important;
+    }
+
+    /* 🔢 СЧЁТЧИК */
+    .score-counter {
+        font-size: 1.2rem !important;
+        position: relative !important;
+        top: 35px !important;
+        margin: 5px 0 20px 0 !important;
+        text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+    }
+
+    /* 🏁 ФИНАЛЬНЫЙ ЭКРАН */
     .finish-container {
         flex-direction: column !important;
-        gap: 20px !important;
-    }
-
-    .finish-left {
-        align-items: center !important;
-        padding-right: 0 !important;
-    }
-
-    .finish-title {
-        font-size: 2.2rem !important;
-        text-align: center !important;
-    }
-
-    .finish-text {
-        font-size: 1rem !important;
-        text-align: center !important;
+        gap: 8px !important;
+        padding: 10px 15px 110px 15px !important;
+        overflow-y: auto !important;
     }
 
     .finish-right {
-        order: -1 !important;
-        margin-bottom: 20px !important;
+        order: 1 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        margin-bottom: 5px !important;
     }
 
     .finish-robot {
-        width: 200px !important;
+        width: 140px !important;
+        max-width: 50% !important;
+        margin: 0 auto 5px auto !important;
     }
 
     .finish-bubble {
         position: static !important;
-        margin: 0 auto 10px auto !important;
-        width: 90% !important;
+        top: 3% !important;
+        left: 25% !important;
+        margin: 0 auto 8px auto !important;
+        width: 50% !important;
+        max-width: 50% !important;
+        padding: 10px 14px !important;
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+        text-align: center !important;
     }
 
+    .finish-left {
+        order: 2 !important;
+        align-items: center !important;
+        padding-right: 0 !important;
+        width: 100% !important;
+    }
+
+    .finish-title {
+        font-size: 1.5rem !important;
+        text-align: center !important;
+        margin: 5px 0 8px 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .finish-text {
+        font-size: 0.85rem !important;
+        text-align: center !important;
+        line-height: 1.4 !important;
+        margin: 0 0 8px 0 !important;
+    }
+
+    .finish-text ul {
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 5px 0 !important;
+        text-align: left !important;
+        display: inline-block !important;
+    }
+
+    .finish-text ul li {
+        padding: 4px 0 4px 25px !important;
+        position: relative !important;
+        font-size: 0.8rem !important;
+    }
+
+    .finish-text ul li::before {
+        content: "✅" !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 4px !important;
+        font-size: 0.75rem !important;
+    }
+
+    .final-praise {
+        font-size: 0.9rem !important;
+        margin-top: 8px !important;
+        text-align: center !important;
+        line-height: 1.3 !important;
+    }
+
+    /* ✅ ИСПРАВЛЕНО: КНОПКА "ИГРАТЬ" В МЕНЮ (ниже, но не растянута) */
+    #intro-screen .play-game {
+        position: fixed !important;
+        bottom: 40px !important;
+        /* ⬇️ ОПУСТИЛ НИЖЕ */
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        height: 50px !important;
+        /* ✅ ФИКСИРОВАННАЯ ВЫСОТА (не растягивается) */
+        min-height: 50px !important;
+        max-height: 50px !important;
+        width: 65% !important;
+        max-width: 240px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.2rem !important;
+        z-index: 10000 !important;
+    }
+
+    #intro-screen .play-game:hover {
+        transform: translateX(-50%) translateY(-2px) !important;
+        background: #7f1ef5 !important;
+    }
+
+    /* ✅ ИСПРАВЛЕНО: КНОПКИ В ФИНАЛЕ (нормальная высота) */
     .finish-buttons-wrapper {
-        width: 100%;
-        margin-top: 10px;
+        position: fixed !important;
+        bottom: 20px !important;
+        left: 0 !important;
+        right: 0 !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        z-index: 10000 !important;
     }
 
     .menu-btn,
     .game3-btn {
-        width: 80% !important;
-        max-width: 280px !important;
-        font-size: 1.2rem !important;
-        padding: 0.8em 2em !important;
+        width: 45% !important;
+        max-width: 160px !important;
+        height: 45px !important;
+        /* ✅ НОРМАЛЬНАЯ ВЫСОТА (убрал конфликт) */
+        min-height: 45px !important;
+        max-height: 45px !important;
+        font-size: 0.95rem !important;
+        padding: 0 15px !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+        /* Текст не переносится */
+    }
+
+    .menu-btn {
+        background: #0209CD !important;
+    }
+
+    .menu-btn:hover {
+        transform: translateY(-2px) !important;
+        background: #7f1ef5 !important;
+    }
+
+    .game3-btn {
+        background: linear-gradient(135deg, #220476, #3F07DC) !important;
+        box-shadow: 0 0 10px rgba(63, 7, 220, 0.3) !important;
+    }
+
+    .game3-btn:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 0 18px rgba(63, 7, 220, 0.5) !important;
     }
 }
