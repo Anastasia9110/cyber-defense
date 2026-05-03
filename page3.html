@@ -16,7 +16,7 @@
           данных в постах вымышленного <br />пользователя и обезвредь их, пока
           <br />мошенники не успели ими воспользоваться.
         </div>
-        <div class="robot-bubble anim-loop-2">
+        <div class="robot-bubble bubble anim-loop-2">
           Сканер заряжен на максимум! <br />
           Мошенники не пройдут. Жми на кнопку,<br />
           чтобы активировать режим Аудитора и начать охоту!
@@ -69,9 +69,10 @@
         </div>
       </div>
 
-      <!-- ЭКРАН 6: ФИНАЛ -->
+      <!-- ✅ ЭКРАН 6: ФИНАЛ -->
       <div id="finish-screen" class="hidden">
         <div class="finish-container">
+          <!-- ЛЕВАЯ ЧАСТЬ: ТЕКСТ -->
           <div class="finish-left">
             <h1 class="finish-title">🎉 ТЫ СПРАВИЛСЯ!</h1>
             <div class="finish-text">
@@ -86,18 +87,33 @@
               </p>
             </div>
           </div>
+
+          <!-- ПРАВАЯ ЧАСТЬ: РОБОТ + КНОПКИ -->
           <div class="finish-right">
             <div class="robot-bubble finish-bubble">
               Отличная работа, Кибер-Аудитор!<br />
               Ты защитил свои данные! 🛡️
             </div>
             <img src="assets/img/robot.svg" alt="Робот" class="finish-robot" />
-            <button
-              class="play-game-2 finish-btn"
-              onclick="location.href = 'page4.html'"
-            >
-              ИГРА 3
-            </button>
+
+            <!-- Контейнер для кнопок, чтобы они стояли ровно -->
+            <div class="finish-buttons-wrapper">
+              <!-- ✅ КНОПКА ГЛАВНОЕ МЕНЮ (Обычный стиль) -->
+              <button
+                class="play-game-2 menu-btn"
+                onclick="location.href = 'index.html'"
+              >
+                ГЛАВНОЕ МЕНЮ
+              </button>
+
+              <!-- ✅ КНОПКА ИГРА 3 (Градиент + Свечение) -->
+              <button
+                class="play-game-2 game3-btn"
+                onclick="location.href = 'page4.html'"
+              >
+                ИГРА 3
+              </button>
+            </div>
           </div>
         </div>
       </div>
