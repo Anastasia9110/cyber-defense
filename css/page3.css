@@ -643,9 +643,10 @@ body {
     .play-game:not(#next-level-btn) {
         position: relative !important;
         left: 50% !important;
+        top: 250px;
         transform: translateX(-50%) !important;
         width: 65% !important;
-        max-width: 280px !important;
+        max-width: 200px !important;
         height: 60px !important;
         min-height: 60px !important;
         display: flex !important;
