@@ -576,8 +576,9 @@ body {
         width: 70% !important;
         max-width: 250px !important;
         position: relative !important;
-        top: 15em !important;
-        left: 3em !important;
+        /* vh работает лучше, чем %, когда высота родителя плавающая */
+        top: 20vh !important;
+        left: 4em !important;
         transform: none !important;
         margin: 0 auto !important;
         display: block !important;
@@ -660,7 +661,7 @@ body {
 
     /* 🟢 КНОПКА ИГРАТЬ (ГЛАВНЫЙ ЭКРАН) - ОТСТУП */
     #intro-screen .play-game {
-        bottom: 15px !important;
+        bottom: 20px !important;
     }
 
     /* 🔵 КНОПКА ДАЛЬШЕ (В ИГРЕ) - ТВОИ НАСТРОЙКИ */
@@ -701,9 +702,9 @@ body {
     .robot-bubble:not(.finish-bubble) {
         font-size: 0.85rem !important;
         padding: 10px 12px !important;
-        width: 55% !important;
+        width: 50% !important;
         max-width: 60% !important;
-        top: 5% !important;
+        top: 3% !important;
         left: 5% !important;
         transform: none !important;
         position: absolute !important;
@@ -712,7 +713,7 @@ body {
     }
 
     .robot-bubble.bubble {
-        top: 15% !important;
+        top: 7% !important;
     }
 
     /* 🏁 ФИНАЛЬНЫЙ ЭКРАН */
