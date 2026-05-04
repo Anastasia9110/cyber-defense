@@ -567,9 +567,7 @@ body {
     body,
     .game-layout {
         overflow: hidden !important;
-        /* Полностью отключаем скролл */
         height: 100vh !important;
-        /* Фиксируем высоту под экран */
         position: relative !important;
     }
 
@@ -595,6 +593,7 @@ body {
         transform: none !important;
         margin: 10px auto 10px auto !important;
         display: block !important;
+        z-index: 10 !important;
     }
 
     /* 📐 ЛЕЙАУТ */
@@ -609,17 +608,12 @@ body {
 
     .post-wrapper {
         position: absolute !important;
-        /* Не fixed, а absolute относительно родителя */
         top: 65% !important;
-        /* Опускаем ниже робота */
         left: 40% !important;
         transform: translate(-50%, -50%) !important;
         width: 100% !important;
         max-width: 350px !important;
         z-index: 5 !important;
-        /* Картинка под роботом и кнопками */
-
-        /* КРИТИЧНО ДЛЯ КЛИКОВ: */
         pointer-events: auto !important;
     }
 
@@ -627,7 +621,6 @@ body {
         width: 100% !important;
         height: auto !important;
         pointer-events: auto !important;
-        /* Разрешаем клики по самой картинке */
         display: block !important;
     }
 
@@ -644,66 +637,42 @@ body {
         z-index: 20 !important;
     }
 
-    /* ✅ КНОПКИ В ИГРЕ И МЕНЮ (ИСПРАВЛЕНО ДЛЯ ПРИВЯЗКИ К НИЗУ ЭКРАНА) */
+    /* ✅ ОБЩИЕ СТИЛИ КНОПОК (ИГРАТЬ И ДАЛЬШЕ) */
     #intro-screen .play-game,
+    #next-level-btn,
     .play-game:not(#next-level-btn) {
         position: relative !important;
-        /* Фиксируем относительно окна, чтобы ушла вниз */
-        bottom: 15px !important;
-        /* Отступ 25px от нижнего края экрана */
         left: 50% !important;
         transform: translateX(-50%) !important;
-
-        /* Жестко ограничиваем размеры, чтобы кнопка не растягивалась */
-        height: 50px !important;
-        min-height: 60px !important;
-        max-height: 60px !important;
         width: 65% !important;
         max-width: 280px !important;
-
-        margin: 0 !important;
-        padding: 0 !important;
+        height: 60px !important;
+        min-height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         z-index: 10000 !important;
         font-size: 1.2rem !important;
+        pointer-events: auto !important;
+        margin: 0 !important;
     }
 
+    /* 🟢 КНОПКА ИГРАТЬ (ГЛАВНЫЙ ЭКРАН) - ОТСТУП */
+    #intro-screen .play-game {
+        bottom: 15px !important;
+    }
+
+    /* 🔵 КНОПКА ДАЛЬШЕ (В ИГРЕ) - ТВОИ НАСТРОЙКИ */
     #next-level-btn,
     .play-game:not(#intro-screen .play-game) {
-        position: relative !important;
-
-        /* 1. ПОДНИМАЕМ ВВЕРХ: отрицательный отступ вытянет кнопку из низа */
-        /* Регулируй это число: чем больше минус, тем выше кнопка */
-        margin-top: -70px !important;
-
-        /* 2. ЦЕНТРИРУЕМ: чтобы translateX(-50%) работал, ставим left 50% */
-        left: 30% !important;
-        transform: translateX(-50%) !important;
-
-        /* 3. РАЗМЕРЫ */
-        width: 65% !important;
-        max-width: 220px !important;
-        height: 60px !important;
-        min-height: 60px !important;
-
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-
-        z-index: 10000 !important;
-        pointer-events: auto !important;
-
-        /* Убираем лишние отступы, чтобы не мешали */
-        margin-bottom: 0 !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        bottom: 40px !important;
+        left: 35% !important;
+        /* Возвращаю как было у тебя */
+        margin-top: 0 !important;
     }
 
     #next-level-btn:hover,
     .play-game:hover {
-        /* Важно сохранить translateX(-50%) и здесь, иначе кнопка прыгнет вбок */
         transform: translateX(-50%) translateY(-2px) !important;
         background: #7F1EF5 !important;
     }
