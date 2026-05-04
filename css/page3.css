@@ -615,7 +615,6 @@ body {
         width: 100% !important;
         max-width: 350px !important;
         z-index: 100000 !important;
-        /* Максимальный слой */
         pointer-events: auto !important;
     }
 
@@ -639,7 +638,7 @@ body {
         z-index: 20 !important;
     }
 
-    /* ✅ ОБЩИЕ СТИЛИ КНОПОК */
+    /* ✅ ОБЩИЕ СТИЛИ КНОПОК (ИСКЛЮЧИЛИ ИЗ ГРУППЫ ИНТРО-КНОПКУ) */
     #next-level-btn,
     .play-game:not(#intro-screen .play-game) {
         position: relative !important;
@@ -656,9 +655,10 @@ body {
         margin: 0 !important;
     }
 
-    /* 🟢 КНОПКА ИГРАТЬ (НАСТРАИВАЕМАЯ ВЫСОТА) */
+    /* 🟢 КНОПКА ИГРАТЬ (СПЕЦИАЛЬНЫЙ ФИКС, ЧТОБЫ НЕ УЛЕТАЛА) */
     #intro-screen .play-game {
         position: absolute !important;
+        /* Фиксируем на экране */
         width: 65% !important;
         max-width: 200px !important;
         height: 60px !important;
@@ -668,12 +668,13 @@ body {
         font-size: 1.2rem !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
-
-        /* ↓ ИЗМЕНЯЙ ЭТО ЧИСЛО, ЧТОБЫ ДВИГАТЬ КНОПКУ ВВЕРХ/ВНИЗ ↓ */
-        bottom: 10px !important;
-
-        z-index: 10 !important;
         pointer-events: auto !important;
+
+        /* УПРАВЛЕНИЕ ВЫСОТОЙ (МЕНЯЙ ЭТО ЧИСЛО) */
+        bottom: 20px !important;
+
+        /* СЛОЙ ВЫШЕ РОБОТА */
+        z-index: 100001 !important;
     }
 
     /* 🔵 КНОПКА ДАЛЬШЕ */
