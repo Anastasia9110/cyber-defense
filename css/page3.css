@@ -639,25 +639,24 @@ body {
         z-index: 20 !important;
     }
 
+    /* ✅ ОБЩИЕ СТИЛИ КНОПОК */
     #next-level-btn,
     .play-game:not(#intro-screen .play-game) {
-        position: absolute !important;
+        position: relative !important;
         width: 65% !important;
         max-width: 200px !important;
         height: 60px !important;
+        min-height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        font-size: 1.2rem !important;
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        pointer-events: auto !important;
         z-index: 10000 !important;
-        /* Позиция для кнопки Дальше */
-        bottom: 60px !important;
+        font-size: 1.2rem !important;
+        pointer-events: auto !important;
+        margin: 0 !important;
     }
 
-    /* 🟢 2. КНОПКА «ИГРАТЬ» (ИНДИВИДУАЛЬНО) */
+    /* 🟢 КНОПКА ИГРАТЬ (НАСТРАИВАЕМАЯ ВЫСОТА) */
     #intro-screen .play-game {
         position: absolute !important;
         width: 65% !important;
@@ -669,19 +668,26 @@ body {
         font-size: 1.2rem !important;
         left: 50% !important;
         transform: translateX(-50%) !important;
+
+        /* ↓ ИЗМЕНЯЙ ЭТО ЧИСЛО, ЧТОБЫ ДВИГАТЬ КНОПКУ ВВЕРХ/ВНИЗ ↓ */
+        bottom: 10px !important;
+
+        z-index: 10 !important;
         pointer-events: auto !important;
-
-        /* СЛОЙ: делаем выше всех, чтобы робот не перекрывал клик */
-        z-index: 999999 !important;
-
-        /* ↓ ВОТ ЭТО ЧИСЛО ТЕПЕРЬ БУДЕТ РАБОТАТЬ ↓ */
-        bottom: 40px !important;
     }
 
-    /* Скрываем, если есть класс hidden */
+    /* 🔵 КНОПКА ДАЛЬШЕ */
+    #next-level-btn {
+        bottom: 60px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        margin-top: 0 !important;
+    }
+
     #next-level-btn.hidden,
-    #intro-screen .play-game.hidden {
+    .play-game.hidden {
         display: none !important;
+        visibility: hidden !important;
     }
 
     /* 💬 СООБЩЕНИЯ */
