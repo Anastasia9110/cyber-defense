@@ -503,13 +503,11 @@ body {
     position: relative !important;
     left: auto !important;
     transform: none !important;
-
     width: 200px !important;
     height: 60px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-
     border-radius: 12px !important;
     font-size: 1.2rem !important;
     color: white !important;
@@ -560,25 +558,37 @@ body {
 /* =========================================
    📱 АДАПТАЦИЯ ДЛЯ ТЕЛЕФОНОВ (ПОЛНАЯ)
    ========================================= */
+
+
 @media (max-width: 768px) {
+
+    /* 📐 УБИРАЕМ ПРОКРУТКУ */
+    html,
+    body,
+    .game-layout {
+        overflow: hidden !important;
+        /* Полностью отключаем скролл */
+        height: 100vh !important;
+        /* Фиксируем высоту под экран */
+        position: relative !important;
+    }
 
     /* 🤖 РОБОТЫ */
     #intro-screen .main-robot {
-        width: 65% !important;
-        max-width: 210px !important;
+        width: 70% !important;
+        max-width: 250px !important;
         position: relative !important;
-        top: 7em !important;
-        left: 4em !important;
+        top: 15em !important;
+        left: 3em !important;
         transform: none !important;
-        margin: 20px auto 15px auto !important;
+        margin: 0 auto !important;
         display: block !important;
         z-index: 10 !important;
     }
 
-    .game-robot,
-    .main-robot {
-        width: 60% !important;
-        max-width: 180px !important;
+    .game-robot {
+        width: 65% !important;
+        max-width: 200px !important;
         position: relative !important;
         top: 1em !important;
         left: 5em !important;
@@ -590,59 +600,110 @@ body {
     /* 📐 ЛЕЙАУТ */
     .game-layout {
         flex-direction: column !important;
-        padding: 5px 0 !important;
+        padding: 2px 0 !important;
         height: auto !important;
         min-height: 100vh !important;
         overflow-y: auto !important;
         align-items: center !important;
     }
 
-    /* 🖼 КАРТИНКА ПОСТА (СДЕЛАНА БОЛЬШЕ) */
     .post-wrapper {
+        position: absolute !important;
+        /* Не fixed, а absolute относительно родителя */
+        top: 65% !important;
+        /* Опускаем ниже робота */
+        left: 40% !important;
+        transform: translate(-50%, -50%) !important;
         width: 100% !important;
-        max-width: 100% !important;
-        margin: 10px auto 70px auto !important;
-        padding: 0 !important;
-        box-sizing: border-box !important;
-        order: 2 !important;
-        display: flex !important;
-        justify-content: center !important;
+        max-width: 350px !important;
+        z-index: 5 !important;
+        /* Картинка под роботом и кнопками */
+
+        /* КРИТИЧНО ДЛЯ КЛИКОВ: */
+        pointer-events: auto !important;
     }
 
     .post-img {
         width: 100% !important;
         height: auto !important;
-        max-height: 80vh !important;
-        min-height: auto !important;
+        pointer-events: auto !important;
+        /* Разрешаем клики по самой картинке */
         display: block !important;
-        object-fit: contain !important;
-        border-radius: 12px !important;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4) !important;
     }
 
-    /* 🔘 КНОПКИ В ИГРЕ */
-    #next-level-btn,
+    /* 🔢 СЧЁТЧИК */
+    .score-counter {
+        font-size: 1.2rem !important;
+        position: absolute !important;
+        top: 240px !important;
+        left: 30px !important;
+        margin: 0 !important;
+        text-align: left !important;
+        width: auto !important;
+        display: block !important;
+        z-index: 20 !important;
+    }
+
+    /* ✅ КНОПКИ В ИГРЕ И МЕНЮ (ИСПРАВЛЕНО ДЛЯ ПРИВЯЗКИ К НИЗУ ЭКРАНА) */
+    #intro-screen .play-game,
     .play-game:not(#next-level-btn) {
-        position: fixed !important;
+        position: relative !important;
+        /* Фиксируем относительно окна, чтобы ушла вниз */
+        bottom: 15px !important;
+        /* Отступ 25px от нижнего края экрана */
         left: 50% !important;
-        bottom: 5px !important;
         transform: translateX(-50%) !important;
-        height: 55px !important;
-        min-height: 55px !important;
-        max-height: 55px !important;
+
+        /* Жестко ограничиваем размеры, чтобы кнопка не растягивалась */
+        height: 50px !important;
+        min-height: 60px !important;
+        max-height: 60px !important;
         width: 65% !important;
-        max-width: 240px !important;
+        max-width: 280px !important;
+
         margin: 0 !important;
         padding: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         z-index: 10000 !important;
-        font-size: 1.15rem !important;
+        font-size: 1.2rem !important;
+    }
+
+    #next-level-btn,
+    .play-game:not(#intro-screen .play-game) {
+        position: relative !important;
+
+        /* 1. ПОДНИМАЕМ ВВЕРХ: отрицательный отступ вытянет кнопку из низа */
+        /* Регулируй это число: чем больше минус, тем выше кнопка */
+        margin-top: -70px !important;
+
+        /* 2. ЦЕНТРИРУЕМ: чтобы translateX(-50%) работал, ставим left 50% */
+        left: 30% !important;
+        transform: translateX(-50%) !important;
+
+        /* 3. РАЗМЕРЫ */
+        width: 65% !important;
+        max-width: 220px !important;
+        height: 60px !important;
+        min-height: 60px !important;
+
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        z-index: 10000 !important;
+        pointer-events: auto !important;
+
+        /* Убираем лишние отступы, чтобы не мешали */
+        margin-bottom: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 
     #next-level-btn:hover,
     .play-game:hover {
+        /* Важно сохранить translateX(-50%) и здесь, иначе кнопка прыгнет вбок */
         transform: translateX(-50%) translateY(-2px) !important;
         background: #7F1EF5 !important;
     }
@@ -663,43 +724,32 @@ body {
         max-width: 50% !important;
         font-size: 0.85rem !important;
         padding: 10px 12px !important;
-        text-align: center !important;
+        text-align: left !important;
         z-index: 9999 !important;
     }
 
     .robot-bubble:not(.finish-bubble) {
-        font-size: 0.8rem !important;
-        padding: 8px 10px !important;
-        width: 40% !important;
-        max-width: 50% !important;
-        top: 3% !important;
-        left: 25% !important;
-        transform: translateX(-50%) !important;
+        font-size: 0.85rem !important;
+        padding: 10px 12px !important;
+        width: 55% !important;
+        max-width: 60% !important;
+        top: 5% !important;
+        left: 5% !important;
+        transform: none !important;
         position: absolute !important;
         z-index: 9999 !important;
-        text-align: center !important;
+        text-align: left !important;
     }
 
     .robot-bubble.bubble {
-        top: 5% !important;
-    }
-
-    /* 🔢 СЧЁТЧИК */
-    .score-counter {
-        font-size: 1.2rem !important;
-        position: relative !important;
-        top: 35px !important;
-        margin: 5px 0 20px 0 !important;
-        text-align: center !important;
-        width: 100% !important;
-        display: block !important;
+        top: 15% !important;
     }
 
     /* 🏁 ФИНАЛЬНЫЙ ЭКРАН */
     .finish-container {
         flex-direction: column !important;
         gap: 8px !important;
-        padding: 10px 15px 110px 15px !important;
+        padding: 10px 15px 150px 15px !important;
         overflow-y: auto !important;
     }
 
@@ -713,22 +763,20 @@ body {
     }
 
     .finish-robot {
-        width: 140px !important;
-        max-width: 50% !important;
+        width: 180px !important;
+        max-width: 80% !important;
         margin: 0 auto 5px auto !important;
     }
 
     .finish-bubble {
         position: static !important;
-        top: 3% !important;
-        left: 25% !important;
-        margin: 0 auto 8px auto !important;
-        width: 50% !important;
-        max-width: 50% !important;
-        padding: 10px 14px !important;
-        font-size: 0.8rem !important;
+        margin: 0 auto 10px 10px !important;
+        width: 60% !important;
+        max-width: 70% !important;
+        padding: 12px 15px !important;
+        font-size: 0.85rem !important;
         line-height: 1.3 !important;
-        text-align: center !important;
+        text-align: left !important;
     }
 
     .finish-left {
@@ -781,37 +829,10 @@ body {
         line-height: 1.3 !important;
     }
 
-    /* ✅ ИСПРАВЛЕНО: КНОПКА "ИГРАТЬ" В МЕНЮ (ниже, но не растянута) */
-    #intro-screen .play-game {
-        position: fixed !important;
-        bottom: 40px !important;
-        /* ⬇️ ОПУСТИЛ НИЖЕ */
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        height: 50px !important;
-        /* ✅ ФИКСИРОВАННАЯ ВЫСОТА (не растягивается) */
-        min-height: 50px !important;
-        max-height: 50px !important;
-        width: 65% !important;
-        max-width: 240px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        font-size: 1.2rem !important;
-        z-index: 10000 !important;
-    }
-
-    #intro-screen .play-game:hover {
-        transform: translateX(-50%) translateY(-2px) !important;
-        background: #7f1ef5 !important;
-    }
-
-    /* ✅ ИСПРАВЛЕНО: КНОПКИ В ФИНАЛЕ (нормальная высота) */
+    /* ✅ КНОПКИ В ФИНАЛЕ */
     .finish-buttons-wrapper {
         position: fixed !important;
-        bottom: 20px !important;
+        bottom: 80px !important;
         left: 0 !important;
         right: 0 !important;
         display: flex !important;
@@ -825,18 +846,16 @@ body {
     .game3-btn {
         width: 45% !important;
         max-width: 160px !important;
-        height: 45px !important;
-        /* ✅ НОРМАЛЬНАЯ ВЫСОТА (убрал конфликт) */
-        min-height: 45px !important;
-        max-height: 45px !important;
-        font-size: 0.95rem !important;
-        padding: 0 15px !important;
+        height: 50px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
+        font-size: 1rem !important;
+        padding: 0 10px !important;
         margin: 0 !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
         white-space: nowrap !important;
-        /* Текст не переносится */
     }
 
     .menu-btn {
