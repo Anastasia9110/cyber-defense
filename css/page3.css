@@ -639,46 +639,49 @@ body {
         z-index: 20 !important;
     }
 
-    /* ✅ КНОПКИ */
-    #intro-screen .play-game,
     #next-level-btn,
-    .play-game:not(#next-level-btn) {
-        position: relative !important;
+    .play-game:not(#intro-screen .play-game) {
+        position: absolute !important;
         width: 65% !important;
         max-width: 200px !important;
         height: 60px !important;
-        min-height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        z-index: 10000 !important;
         font-size: 1.2rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         pointer-events: auto !important;
-        margin: 0 !important;
-    }
-
-    /* 🟢 КНОПКА ИГРАТЬ */
-    #intro-screen .play-game {
-        left: 50% !important;
-        transform: translateX(-50%) !important;
-        bottom: 40px !important;
-        /* Было 70px, теперь выше */
-    }
-
-    /* 🔵 КНОПКА ДАЛЬШЕ (ВЫШЕ И ПО ЦЕНТРУ) */
-    #next-level-btn {
+        z-index: 10000 !important;
+        /* Позиция для кнопки Дальше */
         bottom: 60px !important;
-        /* Приподнял выше */
-        left: 50% !important;
-        /* По центру */
-        transform: translateX(-50%) !important;
-        margin-top: 0 !important;
     }
 
+    /* 🟢 2. КНОПКА «ИГРАТЬ» (ИНДИВИДУАЛЬНО) */
+    #intro-screen .play-game {
+        position: absolute !important;
+        width: 65% !important;
+        max-width: 200px !important;
+        height: 60px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.2rem !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        pointer-events: auto !important;
+
+        /* СЛОЙ: делаем выше всех, чтобы робот не перекрывал клик */
+        z-index: 999999 !important;
+
+        /* ↓ ВОТ ЭТО ЧИСЛО ТЕПЕРЬ БУДЕТ РАБОТАТЬ ↓ */
+        bottom: 40px !important;
+    }
+
+    /* Скрываем, если есть класс hidden */
     #next-level-btn.hidden,
-    .play-game.hidden {
+    #intro-screen .play-game.hidden {
         display: none !important;
-        visibility: hidden !important;
     }
 
     /* 💬 СООБЩЕНИЯ */
