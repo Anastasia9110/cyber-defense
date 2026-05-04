@@ -576,7 +576,6 @@ body {
         width: 70% !important;
         max-width: 250px !important;
         position: relative !important;
-        /* vh работает лучше, чем %, когда высота родителя плавающая */
         top: 20vh !important;
         left: 4em !important;
         transform: none !important;
@@ -589,7 +588,7 @@ body {
         width: 65% !important;
         max-width: 200px !important;
         position: relative !important;
-        top: 1em !important;
+        top: 0.7em !important;
         left: 5em !important;
         transform: none !important;
         margin: 10px auto 10px auto !important;
@@ -607,6 +606,7 @@ body {
         align-items: center !important;
     }
 
+    /* 🖼️ КАРТИНКА ПОСТ (ТЕПЕРЬ ВЫШЕ ВСЕХ ПО СЛОЯМ) */
     .post-wrapper {
         position: absolute !important;
         top: 65% !important;
@@ -614,7 +614,8 @@ body {
         transform: translate(-50%, -50%) !important;
         width: 100% !important;
         max-width: 350px !important;
-        z-index: 5 !important;
+        z-index: 100000 !important;
+        /* Максимальный слой */
         pointer-events: auto !important;
     }
 
@@ -629,7 +630,7 @@ body {
     .score-counter {
         font-size: 1.2rem !important;
         position: absolute !important;
-        top: 240px !important;
+        top: 200px !important;
         left: 30px !important;
         margin: 0 !important;
         text-align: left !important;
@@ -638,14 +639,11 @@ body {
         z-index: 20 !important;
     }
 
-    /* ✅ ОБЩИЕ СТИЛИ КНОПОК (ИГРАТЬ И ДАЛЬШЕ) */
+    /* ✅ КНОПКИ */
     #intro-screen .play-game,
     #next-level-btn,
     .play-game:not(#next-level-btn) {
         position: relative !important;
-        left: 50% !important;
-        top: 250px;
-        transform: translateX(-50%) !important;
         width: 65% !important;
         max-width: 200px !important;
         height: 60px !important;
@@ -659,24 +657,21 @@ body {
         margin: 0 !important;
     }
 
-    /* 🟢 КНОПКА ИГРАТЬ (ГЛАВНЫЙ ЭКРАН) - ОТСТУП */
+    /* 🟢 КНОПКА ИГРАТЬ */
     #intro-screen .play-game {
+        left: 50% !important;
+        transform: translateX(-50%) !important;
         bottom: 20px !important;
     }
 
-    /* 🔵 КНОПКА ДАЛЬШЕ (В ИГРЕ) - ТВОИ НАСТРОЙКИ */
-    #next-level-btn,
-    .play-game:not(#intro-screen .play-game) {
-        bottom: 40px !important;
-        left: 35% !important;
-        /* Возвращаю как было у тебя */
+    /* 🔵 КНОПКА ДАЛЬШЕ (ВЫШЕ И ПО ЦЕНТРУ) */
+    #next-level-btn {
+        bottom: 60px !important;
+        /* Приподнял выше */
+        left: 50% !important;
+        /* По центру */
+        transform: translateX(-50%) !important;
         margin-top: 0 !important;
-    }
-
-    #next-level-btn:hover,
-    .play-game:hover {
-        transform: translateX(-50%) translateY(-2px) !important;
-        background: #7F1EF5 !important;
     }
 
     #next-level-btn.hidden,
@@ -729,7 +724,7 @@ body {
         width: 100% !important;
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
+        align-items: center;
         margin-bottom: 5px !important;
     }
 
