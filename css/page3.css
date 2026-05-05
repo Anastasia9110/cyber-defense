@@ -669,18 +669,14 @@ body {
         left: 50% !important;
         transform: translateX(-50%) !important;
         pointer-events: auto !important;
-
-        /* УПРАВЛЕНИЕ ВЫСОТОЙ (МЕНЯЙ ЭТО ЧИСЛО) */
-        bottom: 20px !important;
-
-        /* СЛОЙ ВЫШЕ РОБОТА */
+        top: 70% !important;
         z-index: 100001 !important;
     }
 
     /* 🔵 КНОПКА ДАЛЬШЕ */
     #next-level-btn {
         bottom: 60px !important;
-        left: 50% !important;
+        left: 30% !important;
         transform: translateX(-50%) !important;
         margin-top: 0 !important;
     }
