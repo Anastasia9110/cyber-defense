@@ -737,12 +737,16 @@ body {
 
     .finish-robot {
         width: 180px !important;
+        position: relative !important;
+        left: 2em !important;
         max-width: 80% !important;
         margin: 0 auto 5px auto !important;
     }
 
     .finish-bubble {
         position: static !important;
+        top: 35%;
+        left: 2%;
         margin: 0 auto 10px 10px !important;
         width: 60% !important;
         max-width: 70% !important;
