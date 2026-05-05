@@ -675,7 +675,7 @@ body {
 
     /* 🔵 КНОПКА ДАЛЬШЕ */
     #next-level-btn {
-        bottom: 60px !important;
+        bottom: 30% !important;
         left: 30% !important;
         transform: translateX(-50%) !important;
         margin-top: 0 !important;
