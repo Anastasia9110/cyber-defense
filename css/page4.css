@@ -269,11 +269,6 @@ body {
     transition: all 0.2s;
 }
 
-.click-zone:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.5);
-}
-
 .visual-circle {
     position: absolute;
     border-radius: 50%;
@@ -328,6 +323,7 @@ body {
 .game-robot {
     width: 260px;
     margin-bottom: 20px;
+    margin-left: 3em;
     animation: float 3s ease-in-out infinite;
 }
 
@@ -345,6 +341,10 @@ body {
     }
 }
 
+/* ============================================ */
+/* НАСТРОЙКА ПОЗИЦИИ СООБЩЕНИЯ РОБОТА          */
+/* ============================================ */
+/* Меняй значения ниже, чтобы двигать облачко: */
 .robot-message {
     background: linear-gradient(to right, #1E88C7, #0790d9);
     color: white;
@@ -356,24 +356,17 @@ body {
     line-height: 1.4;
     font-size: 0.9rem;
     position: relative;
-    margin-bottom: 20px;
-    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 10;
+    display: none;
 }
 
 .robot-message.active {
     display: block;
     animation: fadeInUp 0.5s ease forwards;
-}
-
-.robot-message::after {
-    content: "";
-    position: absolute;
-    bottom: -10px;
-    left: 25px;
-    border-left: 10px solid transparent;
-    border-top: 10px solid #0790d9;
-    border-right: 10px solid transparent;
 }
 
 .trap-message {
@@ -658,107 +651,260 @@ body {
     }
 }
 
-/* АДАПТАЦИЯ ДЛЯ МОБИЛЬНЫХ */
-@media (max-width: 900px) {
+/* Скрываем все input и textarea внутри телефонов */
+.game-screen .phone-frame input,
+.game-screen .phone-frame textarea {
+    display: none !important;
+}
+
+/* Скрываем элементы с классами input-area, code-input и т.д. */
+.input-area,
+.code-input,
+.input-box,
+.code-field,
+.message-input,
+.trap-input,
+.fake-input,
+.input-zone,
+.code-zone {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
+.game-screen .phone-frame div {
+    border: none !important;
+}
+
+/* Специально для серой области с белой рамкой - убираем фон и рамки */
+.game-screen .phone-frame * {
+    box-shadow: none !important;
+}
+
+/* ============================================ */
+/* АДАПТАЦИЯ 768px (МОБИЛЬНАЯ ВЕРСИЯ)          */
+/* ============================================ */
+@media (max-width: 768px) {
+
+    /* Интро */
     #intro-screen .main-robot {
-        width: 200px !important;
+        width: 250px !important;
         right: 5%;
-        top: 40%;
+        top: 52%;
     }
 
     .robot-bubble {
         right: 5%;
         left: 5%;
-        max-width: 90%;
+        max-width: 50%;
         font-size: 0.85rem;
         top: 3rem;
     }
 
     .play-game {
-        top: 15em;
-        left: 5%;
+        width: 60%;
+        top: 75%;
+        left: 25%;
         font-size: 1.2em;
         padding: 0.8em 2em;
     }
 
-    .game-layout {
-        flex-direction: column;
-        padding: 60px 10px 20px;
-        gap: 15px;
-        overflow-y: auto;
+    .play-game-2 {
+        top: 30%;
+        left: 15%;
+        font-size: 1.2em;
+        padding: 0.8em 2em;
     }
 
+    /* Игровой экран */
+    .game-layout {
+        flex-direction: column;
+        padding: 20px 10px 30px;
+        gap: 15px;
+        overflow-y: auto;
+        min-height: auto;
+        align-items: center;
+    }
+
+    /* Блок робота на игровых уровнях */
+    #game-level-1 .robot-area,
+    #game-level-2 .robot-area {
+        width: 100%;
+        max-width: 420px;
+        margin: 0 auto 10px auto;
+        order: 1;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-robot {
+        width: 160px;
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .robot-message {
+        max-width: 90%;
+        margin: 0 auto 10px auto;
+        padding: 12px 15px;
+        font-size: 0.85rem;
+        text-align: center;
+    }
+
+    /* СЧЁТЧИК — строго по центру */
+    .score-counter {
+        font-size: 1.2rem;
+        padding: 8px 18px;
+        margin: 10px auto !important;
+        order: 2;
+        display: block;
+        width: fit-content;
+        text-align: center;
+    }
+
+    /* КНОПКА ДАЛЬШЕ — строго по центру */
+    .play-game-2 {
+        position: static !important;
+        margin: 5px auto 0 auto !important;
+        order: 3;
+        width: 70%;
+        max-width: 260px;
+        font-size: 1.1rem !important;
+        padding: 0.7em 2em !important;
+        display: block;
+        text-align: center;
+    }
+
+    /* Телефоны — после блока управления */
     .phones-wrapper {
         flex-direction: column;
         width: 100%;
         gap: 15px;
         align-items: center;
+        order: 4;
     }
 
     .phone-frame {
-        width: 260px;
-        height: 500px;
+        width: 280px;
+        height: 540px;
     }
 
-    .robot-area {
+    /* ============================================ */
+    /* ЭКРАН ЛОВУШКИ (screen-trap)                 */
+    /* ============================================ */
+    #screen-trap .robot-area {
+        flex-direction: row !important;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 12px;
+        max-width: 95%;
+        margin: 30px auto 20px auto;
+        /* Отступ сверху */
+        order: 1;
+    }
+
+    /* Робот слева — делаем крупнее и опускаем ниже */
+    #screen-trap .game-robot {
+        width: 170px !important;
+        margin-top: 20px !important;
+        /* Опускаем робота ниже */
+        margin-bottom: 0 !important;
+        flex-shrink: 0;
+    }
+
+    /* Сообщение (красное) — поднимаем выше */
+    #screen-trap .robot-message {
+        position: relative !important;
+        top: -15px !important;
+        /* Поднимаем сообщение выше */
+        right: auto !important;
+        margin: 0 !important;
+        max-width: 200px;
+        padding: 12px 14px;
+        font-size: 0.82rem;
+        order: 1;
+    }
+
+    /* Кнопка "Понял, больше не буду!" — опускаем ниже */
+    #screen-trap .play-game-2 {
+        position: static !important;
+        margin: 30px 0 0 0 !important;
+        /* Опускаем кнопку ниже */
+        order: 2;
+        width: auto;
+        min-width: 180px;
+        font-size: 1rem !important;
+        padding: 0.6em 1.5em !important;
+        white-space: nowrap;
+    }
+
+    /* Экран выбора (Бонус) */
+    .choose-buttons {
+        order: 3;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
         width: 100%;
         margin-top: 10px;
     }
 
-    .game-robot {
-        width: 150px;
-        margin-bottom: 10px;
+    .choose-buttons .play-game {
+        position: static !important;
+        margin: 0 !important;
+        flex: 1;
+        max-width: 140px;
+        font-size: 0.95em !important;
+        padding: 0.6em 1em !important;
     }
 
-    .robot-message {
-        max-width: 95%;
-        margin: 0 auto 15px auto;
-        font-size: 0.85rem;
-        padding: 15px;
-    }
-
-    .score-counter {
-        font-size: 1.2rem;
-        padding: 6px 15px;
-    }
-
-    .play-game-2 {
-        font-size: 1.2rem !important;
-        padding: 0.6em 1.8em !important;
-    }
-
+    /* ============================================ */
+    /* ФИНАЛЬНЫЙ ЭКРАН                             */
+    /* ============================================ */
     .finish-container {
         flex-direction: column;
-        padding: 1rem;
+        padding: 1.5rem;
         gap: 1rem;
+        min-height: auto;
     }
 
     .finish-left {
         max-width: 100%;
+        text-align: center;
+        order: 2;
     }
 
-    .finish-title {
-        font-size: 2rem;
-    }
-
-    .finish-stats {
-        justify-content: center;
+    .finish-right {
+        order: 1;
+        margin-bottom: 10px;
     }
 
     .finish-robot {
         width: 200px;
     }
 
+    .finish-title {
+        font-size: 2.2rem;
+    }
+
+    .finish-stats {
+        justify-content: center;
+    }
+
     .trophy-animation {
         display: none;
     }
 
+    /* КНОПКА ГЛАВНОЕ МЕНЮ — опускаем сильно вниз */
     .main-menu-btn {
-        font-size: 1.2rem;
-        padding: 1rem 2rem;
+        margin-top: 80px !important;
+        /* Ещё ниже */
+        margin-bottom: 30px;
+        width: 80%;
+        max-width: 320px;
     }
 }
 
+/* Адаптация для мобильных (480px) */
 @media (max-width: 480px) {
     .phone-frame {
         width: 240px;
@@ -766,7 +912,21 @@ body {
     }
 
     .game-robot {
-        width: 120px;
+        width: 130px;
+    }
+
+    #screen-trap .game-robot {
+        width: 150px !important;
+        margin-top: 15px !important;
+    }
+
+    #screen-trap .robot-message {
+        top: -10px !important;
+        max-width: 180px;
+    }
+
+    #screen-trap .play-game-2 {
+        margin-top: 20px !important;
     }
 
     .finish-title {
@@ -775,5 +935,10 @@ body {
 
     .stat-value {
         font-size: 1.5rem;
+    }
+
+    .main-menu-btn {
+        margin-top: 60px !important;
+        margin-bottom: 20px;
     }
 }
